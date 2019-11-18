@@ -1,0 +1,171 @@
+<!DOCTYPE html><!-- 页面申明 -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8"><!-- 网页编码 -->
+    <meta name="keywords" content="第一次练习，这个是mate属性是啥意思"><!-- 关键字 -->
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>HTML的练习</title>
+    <style type="text/css"> table, tr,th{border:3px sold #002}
+    </style><!-- 利用样式表给表格加边框与颜色 -->
+</head>
+<body>
+    <p>这些都是便签</p>
+
+    <p>我是段落1</p><!-- 段落标签 -->
+    <p>我是第三段</p>
+
+    <h1>我是h1，我最重要。</h1><!-- h（1-6）标题标签 -->
+    <h2>我是h2,排行第二</h2>
+    <h3>我是h3，排行老三</h3>
+    <h4>我是h4，排行老四，比前面三个都小</h4>
+    <h5>我是h5，我是第五个标题标签。</h5>
+    <h6>我是h6，我虽然最小的，但我也是标题标签噢。</h6>
+    <strong>我是strong，我是更加强调的标签</strong><!-- 语义强调 -->
+
+    <p><em>我是em,我也是强调标签，不过我在国内被用的比较少，我用斜体显示</em></p><!-- 语义也是强调 -->
+    <p>不应该啊<span>我是用来测试span的</span>为啥不显示</p>
+
+    <p>我最喜欢<q>人生自古谁无死，留取丹心照汗青。</q></p>
+    <p>我最喜欢的诗是：<blockquote>日照香炉生紫烟，遥看瀑布挂前川。飞流直下三千尺，疑是银河落九天。</blockquote>这是李白写的一首诗</p>
+    <p>这段是用来测试空格标签的，这里手动空了四个    ，但html只会显示一个，所以要用空格便签来表示，
+        &nbsp;&nbsp;&nbsp;&nbsp;,这里夜空了四个空格</p>
+    <p>这段是用来测试折行标签br的<br />
+    看看效果怎么样<br />它相当于回车<br /> 
+    </p>
+    <hr /><!-- 这个是水平线标签 -->
+    <br />
+    <hr /><!-- <br />、<hr />和<img />都是空标签，他们没有开始标签 -->
+    <br />
+    要想显示大段代码用pre标签
+    <code>
+        <pre>
+            var message="欢迎";
+            for(var i；i《10；i++)
+            {
+                alert(message);
+            }
+        </pre>
+    </code>
+
+    <br />
+    要想显示一段代码用code标签：
+    <code>
+        var i=i+300;
+    </code>
+    <br />
+    <p>ul-li这个是没有前后顺序的信息列表：</p>
+    <ul>
+        <li>ul-li这个无序标签</li>
+        <li>第二条会显示在哪里呢</li>
+        <li>哈哈哈哈哈哈哈哈</li>
+    </ul>
+    <p>ol-li是排行榜，也就是有序列表嘛</p>
+    <ol>
+        <li>它是有序标签</li>
+        <li>常用作排行榜</li>
+        <li>前面的数字可以替换成很多种形式（应该是用css吧）</li>
+    </ol>
+    <p>只有一个li是列表，譬如以下</p>
+    <li>列表1</li>
+    <li>列表2</li>
+    <li>列表3</li>
+    <p>利用div标签进行排版，相当于一个容器。div id="板块名称“</p>
+    <div id="表格">
+        <p>创建表格标签的四个元素：</p>
+        <ul>
+            <li>table</li>
+            <li>tbody</li>
+            <li>tr</li>
+            <li>th</li>
+            <li>td</li>
+        </ul>
+    其中：
+        <ol>
+            <li>整个表格以&lt;table&gt;标签开始，以&lt/table&gt;标签结束</li>
+            <li>&lt;tbody&gt;...&lt;tbody&gt;标签后，这个表格就要等表格内容全部下载完才会显示</li>   
+            <li>&lt;tr&gt;...&lt;/tr&gt;:表格的一行，所以有几对tr表格就有几行</li>
+            <li>&lt;td&gt;...&lt;/td&gt;:表格的头部的一个单元格，一行包含几对&lt;td&gt;...&lt;td*gt;说明一行中就有几列</li>
+            <li>&lt;th&gt;...&lt;/th&gt;:表格的头部的一个单元格，表格表头</li>
+            <li>表格中列的个数，取决于一行中数据单元格的个数</li>
+        </ol>
+    
+        <p>举个栗子：（包含加边框与合并单元格）</p>
+        <table summary="这是表格介绍文本" border="1"><!-- 给表格加边框也可以用border="1" -->
+        <caption>这个是表格的标题caption</caption><!-- 标题标签用caption -->
+        <tbody align="center">
+            <tr>
+                <th>产品名称</th>
+                <th>品牌</th>
+                <th>库存量</th>
+                <th>入库时间</th>
+            </tr>
+            <tr>
+                <td>耳机</td>
+                <td>联想</td>
+                <td>200</td>
+                <td>20131-2</td>
+            </tr>
+            <tr>
+                <td>U盘</td>
+                <td>金士顿</td>
+                <td>120</td>
+                <td>2003-4-23</td>
+            </tr>
+            <tr>
+                <td>u盘</td>
+                <td>爱国者</td>
+                <td colspan="2">合并</td><!-- 合并单元格 -->
+            </tr>
+        </tbody>
+        </table>
+    </div>
+    <div>
+        <p>&lt;table summary="表格介绍文本”&gt;,也就是摘要，他的作用是增加表格的可读性（语义化）</p>
+        <p>表格的标题，用以描述表格的内容，位于表格上方。</p>
+        <pre>
+            &lt;table&gt;
+                &lt;caption&gt;表格的标题内容&lt/caption&gt;
+                &lt;tr&gt;
+                    &lt;td&gt;...&lt;/td&gt;
+                &lt;tr&gt;
+            &lt;/table&gt;
+        </pre>
+        <p>summary摘要，概要</p>
+
+        <p>在新建浏览器窗口中打开浏览器：&lt; a href="" target="_blank"&gt;...&lt;/a&gt; </p>
+        <p>mailta:xxx@qq.com 点击链接发送邮件！</p>
+
+        <p><a href="mailto::yuhan@kuaidi.com?cc=2323522@qq.com&bcc=570421297@qq.com&subject=测试专用&body=啦啦啦啦">给某某发邮件</a></p>
+
+        <p><img src="http://www.kuaidi.com/theme/default/images/kuaidi/ft_wx.png" alt="">快递网微信公众号 <title>快递网公众号</title></p>
+        <p>图片加标题的格式：</p>
+
+        <figure>
+                <figcaption>快递网微信公众号</figcaption>
+                <img src="http://www.kuaidi.com/theme/default/images/kuaidi/ft_wx.png" alt="快递网微信公众号" title="快递网微信公众号" />
+        </figure>
+        <p>网站怎么样与用户进行交互？答案是使用HTML表单（form）</p>
+        <p>文本框、密码框输入：</p>
+
+        <form>
+            账号：
+            <input type="text" name="gary" placeholder="请输入你的账号">
+            <br />
+            密码：
+            <input type="password" name="mima" placeholder="请输入你的密码">
+            <br />
+            <p>意见反馈：
+            <br />
+                <textarea cows="500" cols="100" rows="10">请在这里输入你的意见</textarea>
+            </p>
+        </form>
+    </div>
+    <form action="">
+        账号：
+        <br />
+        <input type="text" >
+        密码：
+        <input type="password"" name="" id="">
+    </form>
+</body>
+</html>
