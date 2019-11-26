@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style type="text/css">
+  body{
+    padding: 0;
+    margin: 0;
+  }
+  #heard{
+    background-color: black;
+    color: #ffff;
+  }
+  .p1{
+    width: 600px;
+    margin: auto;
+  }
+  .p2{
+    width: 600px;
+    margin: 1em auto;
+  }
+  #box{
+    width: 600px;
+    margin: auto;
+  }
+  nav{
+    width: 174px;
+    height: 34px;
+    border: 3px solid;
+    background-color: pink;
+    line-height: 34px;
+    text-align: center;
+    margin-bottom: 15px;
+  }
+  nav:nth-child(-n+8):nth-last-child(-n+8){
+  margin-left:210px;
+  }
+  nav:nth-last-child(-n+4){
+    margin-left: 420px;
+  }
+  nav:nth-child(4){
+    margin-bottom: -205px;
+  }
+  nav:nth-child(8){
+    margin-bottom: -205px;
+  }
+
+  nav:hover{
+    background-color: red;
+  }
+  main{
+    border-bottom:1px dotted;
+    margin: 0 auto;
+    border-bottom-color: black;
+  }
+  .p1 main:nth-last-child(1){
+    border-bottom: transparent;
+  }
+  #bottom{background-color: violet;}
+  #bottom p{
+    text-align: center;
+    margin: 0;
+  }
+  </style>
+</head>
+<body>
+  <div id="heard">
+    <p class="p1">hello world 请调整浏览器窗口大小查看效果</p>
+  </div>
+  <div>
+    <p class="p2">页面主体 宽度600px 页面主体 宽度600px 页面主体 宽度600px 页面主体 宽度600px 页面主体 宽度600px 页面主体 宽度600px 页面主体 宽度600px 页面主体 宽度600px 页面主体 宽度600px 页面主体 宽度600px 页面主体 宽度600px 页面主体 宽度600px 页面主体 宽度600px 页面主体 宽度600px 页面主体 宽度600px 页面主体 宽度600px 页面主体 宽度600px 页面主体 宽度600px</p>
+  </div>
+  <div id="box">
+    <nav>宽180高40(包含边框)</nav>
+    <nav>水平间隙30px</nav>
+    <nav>垂直间隙15px</nav>
+    <nav>边框宽度3px</nav>
+    <nav>产品</nav>
+    <nav>产品</nav>
+    <nav>产品</nav>
+    <nav>产品</nav>
+    <nav>产品</nav>
+    <nav>产品</nav>
+    <nav>产品</nav>
+    <nav>产品</nav>
+  </div>
+  <div class="p1">
+    <main>link</main>
+    <main>link</main>
+    <main>link</main>
+    <main>link</main>
+    <main>link</main>
+  </div>
+  <div id="bottom">
+    <p>©版权所有</p>
+    <p>本页所有布局均使用块元素</p>
+  </div>
+</body>
+</html>
