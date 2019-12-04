@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        input{
+            display: none;/* 隐藏checkbox按钮 */
+        }
+    .switch + label{
+        display: inline-block;/* 设为行内块 */
+        width: 270px;/* 设置外框宽度 */
+        height: 156px;/* 设置外壳高度 */
+        border: 6px #c7cbc7 solid;/* 边框颜色 实线 */
+        box-sizing: border-box;
+        background: #ffffff;/* 背景色为白色 */
+        border-radius: 70px;/* 矩形角设为70° */
+        padding: 10px;/* 圆形与边框的距离 */
+        position: relative;/* 给圆形设置父定位元素 */
+        transition: .5s;/* 设置矩形切换背景时间 */
+    }
+    .switch:checked + label{
+        border:6px #30f34d solid;/* 点击按钮后边框变为绿色 */
+        box-shadow:0 0 0 78px #30f34d inset;/*设置阴影大小，阴影向内扩张填满背景 */
+    }
+    .switch + label::after{
+        content: "";/* 添加框内圆形 */
+        width: 124px;
+        height: 124px;
+        border-radius: 62px;/* 设置圆形大小 */
+        background-color: #fff;/* 圆形背景颜色 */
+        display: inline-block;/* 圆形设置为行内块 */
+        box-sizing: border-box;  /* 圆形border-box固定 */
+        box-shadow: 0 0 20px #c3c3c3;/* 设置圆形阴影 */
+        position: absolute;/* 绝对定位 */
+        left: 10px;/* 圆形与矩形左内边框距离，以padding为起点 */
+        transition: .5s;/* 设置圆形向右移动时间 */
+    }
+    .switch:checked +label::after{
+        left:130px;/* 向右移动 */
+    }
+    ul{
+        list-style:none;
+        display: inline-block;
+       
+        font-size: 0;
+    }
+    li{font-size: 24px;
+        height: 75px;
+        margin-left: 45px;
+        position: relative;
+        }
+    input[type="radio"] + label::before{
+        content: "";
+        width: 32px;
+        height: 32px;
+        border: 4px #1c211f solid;
+        display: inline-block;
+        border-radius: 50%;
+        position: absolute;
+        left: -10px; 
+        top: -10px;
+        transition: 1s;
+    }
+    input[type="radio"]:checked + label::before{
+        border: 4px #03c15e solid;
+    }
+    input[type="radio"] + label{
+        display: inline-block;
+        position: absolute;
+        border-radius: 50%;
+        width: 20px;
+        height: 20px;
+        top: 10px;
+        left:-50px;
+        transition: 1s;
+    }
+    input[type="radio"]+label:active{
+        box-shadow: 0 0 0 34px #9edcbc,0 0 0 54px #9edcbc inset;
+    }
+    
+    input[type="radio"]:checked + label:active{
+        box-shadow: 0 0 0 34px #9edcbc;
+    }
+    input[type="radio"]:checked + label{
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        background-color: #03c15e;
+    }
+    </style>
+</head>
+<body>
+    <input type="checkbox" id="botton" class="switch">
+    <label for="botton"></label>
+    <div>
+        <ul>
+            <li>
+                <input type="radio" id="radio-a" name="radio" class="a">Radio Button
+                <label for="radio-a"></label>
+            </li>
+            <br>
+            <li>
+                <input type="radio" id="radio-b" name="radio" class="b">Radio Button
+                <label for="radio-b"></label>
+            </li>
+            <br>
+            <br>
+            <li>
+                <input type="radio" id="radio-c" name="radio" class="c">Radio Button
+                <label for="radio-c"></label>
+            </li>
+        </ul>
+    </div>
+</body>
+</html>
