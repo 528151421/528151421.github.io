@@ -12,12 +12,12 @@ console.log((a + b) * c)
 
 <script id="ch0103/03">
 var a = Number(prompt("请输入一个整数a")), b = Number(prompt("请输入一个整数b")),c = Number(prompt("请输入一直整数c"));
-console.log(Number((a + b)/c))
+console.log(Math.ceil((a + b)/c))
 </script>
 
 <script id="ch0103/04">
 var a = Number("请输入一个除数"), b = Number("请输入一个被除数");
-console.log((Number(a / b)) + " " + (Number(a%b)))
+console.log(Math.ceil(a / b) + " " + (a % b))
 </script>
 
 <script id="ch0103/05">
@@ -27,7 +27,7 @@ console.log((a / b).toFixed(9))
 
 <script id="ch0103/06">
 var a = Number(prompt("请输入确诊数")), b = Number(prompt("请输入死亡数"));
-console.log("((b / a).toFixed(3) * 100)" + "%" )
+console.log(((b / a).toFixed(3) * 100) + "%" )
 </script>
 
 <script id="ch0103/07" >
@@ -136,5 +136,266 @@ console.log((5 * (F - 32) / 9).toFixed(5));
     console.log(Math.pow(2, n));
 </script>
 
+<script id="ch0104/01">
+    var N = Number(prompt("请输入一个整数值"));
+    if (N > 0){
+        console.log("positive")
+    }
+    else if (N = 0){
+        console.log("zero")
+    }
+    else {
+        console.log("negative")
+    }
+</script>
 
+<script id="ch0104/02">
+    var a = Number(prompt("请输入一个浮点数"));
+    var b = Math.abs(a).toFixed(2);
+    console.log(b)
+</script>
 
+<script id="ch0104/03">
+    var n = Number(prompt("请输入一个整数"))
+    if ((n % 2) = 0){
+        console.log("even")
+    }
+    else{
+        console.log("odd")
+    }
+</script>
+
+<script id="ch0104/04">
+    var a = prompt("请输入一个字符")
+    var b = a.charCodeAt(a);
+    if ((b % 2) = 0){
+        console.log("YES")
+    }
+    else{
+        console.log("NO")
+    }
+</script>
+
+<SCript id="ch0104/05">
+    var x = Number(prompt("请输入整数x"));
+    var y = Number(prompt("请输入整数y"));
+    if (x > y){
+        console.log(">")
+    }
+    else if  (x = y) {
+        console.log("=")
+    }
+    else{
+        console.log("<")
+    }
+</SCript>
+
+<script id="ch0104/06">
+    var a = Number(prompt("请输入一个正整数"));
+    if (a > 9){
+        console.log("1")
+    } 
+    else{
+        console.log("0")
+    }
+</script>
+
+<script id="ch0104/07">
+    var luck = Number(prompt("请输入幸运的瓶盖数量"));
+    var encourage = Number(prompt("请输入鼓励的瓶盖数量"));
+    if (luck >= 10 ||encourage >= 20){
+        console.log("1")
+    }
+    else{
+        console.log("0")
+    }
+</script>
+
+<script id="ch0104/08">
+    var n = Number(prompt("请输入一个整数"));
+    if (n % 5 == 0 && n % 3 == 0){
+        console.log("YES")
+    }
+    else{
+        console.log("NO")
+    }
+</script>
+
+<script id="ch0104/09">
+    var n = Number(prompt("请输入一个整数"));
+    if (n % 3 == 0 && n % 5 == 0 && n % 7 == 0){
+        console.log(3 + " " + 5 + " " + 7)
+    }
+    else if (n % 3 == 0 && n % 5 == 0){
+        console.log(3 + " " + 5)
+    }
+    else if (n % 3 == 0 && n % 5 == 0){
+        console.log( 3 + " " + 7)
+    }
+    else if ( n % 5 == 0 && n % 7 == 0){
+        console.log(5 + " " + 7)
+    }
+    else if (n % 3 == 0){
+        console.log(3)
+    }
+    else if (n % 5 == 0){
+        console.log(5)
+    }
+    else if (n % 7 == 0){
+        console.log(7)
+    }
+    else{
+        console.log("n")
+    }
+</script>
+
+<script id="ch0104/10">
+    var language = Number(prompt("请输入语文成绩"));
+    var mathematics = Number(prompt("请输入数学成绩"));
+    if ((language < 60 && mathematics >= 60) ||(language >= 60 && mathematics < 60)){
+        console.log(1)
+    }
+    else{
+        console.log(0)
+    }
+</script>
+
+<script id="ch0104/11">
+    var a = Number(prompt("贝贝邀请的日期"));
+    if (a == 1 || a == 3 || a == 5){
+        console.log("NO")
+    }
+    else{
+        console.log("YES")
+    }
+</script>
+
+<script id="ch0104/12">
+    var distance = Number(prompt("请输入办事的距离"))
+    if (distance / 1.2 > distance / 3 + 27 + 23){
+        console.log("Bike")
+    }
+    else if (distance / 1.2 == distance / 3 + 27 + 23){
+        console.log("All")
+    }
+    else{
+        console.log("Walk")
+    }
+</script>
+
+<script id="ch0104/13">
+    var x = Number(prompt(请输入一个浮点数));
+    if (0 <= x <5){
+        console.log((-x + 2.5).toFixed(3))
+    }
+    else if (5 <= x <10){
+        console.log((2- 1.5 * (x - 3) * (x - 3)).toFixed(3))
+    }
+    else if (10 <= x < 20){
+        console.log((x / 2 - 1.5).toFixed(3))
+    }
+</script>
+
+<script id="ch0104/14">
+    var weight = Number(prompt("请输入重量"));
+    var speed =(prompt("是(y)否(n)加急"));
+    if (speed == y){
+        if (weight <= 1000){
+            console.log(8+5)
+        }
+        else {
+            console.log(8 + Math.ceil((weight - 1000) / 500) * 4 + 5)
+        }
+    }
+    else {
+        if (weight <= 1000){
+            console.log(8)
+        }
+        else {
+            console.log(8 + Math.ceil((weight - 1000) / 500) * 4)
+        }
+    }
+</script>
+
+<script id="ch0104/15">
+    var a = Number(prompt(请输入一个整数a));
+    var b = Number(prompt(请输入一个整数b));
+    var c = Number(prompt(请输入一个整数c));
+    if (a > b && a > c){
+        console.log(a)
+    }
+    else if (b > a && b > c){
+        console.log(b)
+    }
+    else if(c > a && c > b){
+        console.log(c)
+    }
+</script>
+
+<script id="ch0104/16">
+    var a = Number(prompt("请输入正整数a"));
+    var b = Number(prompt("请输入正整数b"));
+    var c = Number(prompt("请输入正整数c"));
+    if (a + b > c || a + c > b || b + c >a){
+        console.log("yes")
+    }
+    else("no")
+</script>
+
+<script id="ch0104/17">
+    var a = Number(prompt("请输入一个整数"));
+    if ((a % 4 == 0 && a % 100 != 0) || (a % 400 == 0){
+        console.log("Y")
+    }
+    else {
+        console.log("N")
+    }
+</script>
+
+<script id="ch0104/18">
+    var x = Number(prompt("请输入整数x"));
+    var y = Number(prompt("请输入整数y"));
+    if (-1 >= x <= 1 && -1 >= y <= 1){
+        console.log("yes")
+    }
+    else{
+        console.log("no")
+    }
+</script>
+
+<script id="ch0104/19">
+    var x = Number(prompt("请输入第一个整数"));
+    var y = Number(prompt("请输入第二个整数"));
+    var result = 
+    if (z == "/" && z == 0){
+        console.log("Divided by zero");
+    }
+    else if (z != "+" || z != "-" || z != "*" || z !="/"){
+        console.log("Invalid operator!")
+    }
+    else{
+        if (z == "+"){
+            console.log(x + y)
+        }
+        else if (z == "-"){
+            console.log(x - y)
+        }
+        else if (z == "*"){
+            console.log(x * y)
+        }
+        else if (z == "/"){
+            console,log(x / y)
+        }
+    }
+</script>
+
+<script id="ch0104/20">
+
+</script>
+
+<script id="ch0104/21">
+    var n = Number(prompt("请输入苹果数量"));
+    var x = Number(prompt("请输入吃掉一个苹果花费的时间"));
+    var y = Number(prompt("请输入经过的时间y"));
+    console.log(n-Math.ceil(y / x));
+</script>
