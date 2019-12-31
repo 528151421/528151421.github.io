@@ -17,7 +17,7 @@ console.log(Math.trunc((a + b)/c))
 
 <script id="ch0103/04">
 var a = Number(prompt("请输入一个除数")), b = Number(prompt("请输入一个被除数"));
-console.log(Math.ceil(a / b) + " " + (a % b))
+console.log(Math.trunc(a / b) + " " + (a % b))
 </script>
 
 <script id="ch0103/05">
@@ -31,11 +31,11 @@ console.log(((b / a) * 100).toFixed(3) + "%" )
 </script>
 
 <script id="ch0103/07" >
+var x = Number(prompt("请输入实数x的值"))
 var a = Number(prompt("请输入参数a"));
 var b = Number(prompt("请输入参数b"));
 var c = Number(prompt("请输入参数c"));
 var d = Number(prompt("请输入参数d"));
-var x = Number(prompt("请输入实数x的值"))
 console.log((a * Math.pow(x,3) + b * Math.pow(x,2) + c * x + d).toFixed(7));
 </script>
 
@@ -62,7 +62,7 @@ console.log((5 * (F - 32) / 9).toFixed(5));
 <script id="ch0103/11">
     var a = Number(prompt("请输入浮点数a的值"));
     var b = Number(prompt("请输入浮点数b的值"));
-    var r = ((a / b)%);
+    var r = (a % b).toFixed(10)-0
     console.log(r)
 </script>
 
@@ -77,21 +77,21 @@ console.log((5 * (F - 32) / 9).toFixed(5));
     var a = n%10;
     var b = Math.trunc(n * 0.1) % 10;
     var c = Math.trunc(n * 0.01) % 10;
-    console.log("a"+b+"c")
+    console.log(""+a + b + c)
 </script>
 
 <script id="ch0103/14">
     var h = Number(prompt("请输入深h"));
     var r = Number(prompt("请输入半径r"));
-    var t = Math.pow(r,2) * PI * h;
-    console.log(Math.round(t));
+    var t = Math.pow(r,2) * 3.14159 * h;
+    console.log(Math.ceil(20 / (t / 1000)));
 </script>
 
 <script id="ch0103/15">
     var n = Number(prompt("请输入一箱苹果数"));
     var x = Number(prompt("请输入虫子吃一个苹果的花费的时间x"));
     var y = Number(prompt("请输入经过的时间y"));
-    var z = n - Math.trunc(y / x);
+    var z = n - Math.ceil(y / x);
     console.log(z)
 </script>
 
@@ -123,7 +123,8 @@ console.log((5 * (F - 32) / 9).toFixed(5));
     var a1 = Number(prompt("请输入a1的值"));
     var a2 = Number(prompt("请输入a2的值"));
     var n = Number(prompt("请输入n的值"));
-    var m = (a2 - a1) * n;
+    var m = a1 +(a2 - a1) * (n-1);
+    console.log(m)
 </SCript>
 
 <script id="ch0103/19">
@@ -158,7 +159,7 @@ console.log((5 * (F - 32) / 9).toFixed(5));
 
 <script id="ch0104/03">
     var n = Number(prompt("请输入一个整数"))
-    if ((n % 2) = 0){
+    if ((n % 2) == 0){
         console.log("even")
     }
     else{
@@ -169,11 +170,11 @@ console.log((5 * (F - 32) / 9).toFixed(5));
 <script id="ch0104/04">
     var a = prompt("请输入一个字符")
     var b = a.charCodeAt(a);
-    if ((b % 2) = 0){
-        console.log("YES")
+    if ((b % 2) == 0){
+        console.log("NO")
     }
     else{
-        console.log("NO")
+        console.log("YES")
     }
 </script>
 
@@ -285,7 +286,7 @@ console.log((5 * (F - 32) / 9).toFixed(5));
 </script>
 
 <script id="ch0104/13">
-    var x = Number(prompt(请输入一个浮点数));
+    var x = Number(prompt("请输入一个浮点数"));
     if (0 <= x <5){
         console.log((-x + 2.5).toFixed(3))
     }
@@ -345,7 +346,7 @@ console.log((5 * (F - 32) / 9).toFixed(5));
 
 <script id="ch0104/17">
     var a = Number(prompt("请输入一个整数"));
-    if ((a % 4 == 0 && a % 100 !== 0) || (a % 400 == 0)){
+    if ((a % 4 == 0 && a % 100 !== 0) || (a % 400 == 0) && (a % 3200 !== 0) ) {
         console.log("Y")
     }
     else {
@@ -371,9 +372,6 @@ console.log((5 * (F - 32) / 9).toFixed(5));
     if (z == "/" && z == 0){
         console.log("Divided by zero");
     }
-    else if (z !== "+" || z !== "-" || z !== "*" || z !=="/"){
-        console.log("Invalid operator!")
-    }
     else{
         if (z == "+"){
             console.log(x + y)
@@ -386,6 +384,9 @@ console.log((5 * (F - 32) / 9).toFixed(5));
         }
         else if (z == "/"){
             console,log(x / y)
+        }
+        else {
+        console.log("Invalid operator!")
         }
     }
 </script>
