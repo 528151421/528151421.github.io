@@ -633,3 +633,69 @@ console.log((5 * (F - 32) / 9).toFixed(5));
     console.log(ab);
 </script>
 
+<script id="ch0105/18">
+    var n = Number(prompt("请输入整数n"));
+    var a = Number(prompt("请输入鸡尾酒疗法总病例数"));
+    var b = Number(prompt("请输入鸡尾酒疗法有效病例数"));
+    var ab = b / a
+    var i = 1;
+    while (i < n){
+        i ++;
+        var x = Number(prompt("请输入实验总病例数"));
+        var y = Number(prompt("请输入有效病例数"));
+        var xy = y / x
+        if (xy - ab > 0.05){
+            console.log("better");
+        }else if (ab - xy > 0.05){
+            console.log("worse")
+        }else{
+            console.log("same")
+        }
+    }
+</script>
+
+<script id="ch0105/19">
+    var n = Number(prompt("请输入屋顶数"));
+    var i = 0;
+    while (i < n){
+        var x = Number(prompt("请输入x坐标"));
+        var y = Number(prompt("请输入y的坐标"));
+        var h = Number(prompt("请输入人数"));
+        xy = math.sqrt(Math.pow(x, 2));
+    }
+    time = (1 * n + 0.5 * n + xy / 50).Math.ceil
+    console.log(time) 
+</script>
+
+<script id="ch0105/20">
+    var h = Number(prompt("请输入原高度"));
+    jump = -h
+    helf = h
+    var i = 0;
+    while( i < 10){
+        i ++;
+        jump =jump + helf * 2
+        helf = helf - helf / 2;
+    }
+    console.log(jump)
+    console.log(helf)
+</script>
+
+<script id="ch0105/21">
+    var N = Number(prompt("请输入一个正整数"))
+    while (true){
+        if (N == 1){
+            console.log("End")
+        break
+        }
+        if(N % 2 == 0){
+            X = N
+            N = N / 2
+            console.log(X +  "/" + 2 + "=" + N)
+        }else{
+            X = N
+            N = N * 3 + 1
+            console.log(X + "*" + 3 + "+" + 1 + "=" + N)
+        } 
+    }
+</script>
