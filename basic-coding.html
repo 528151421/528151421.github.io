@@ -577,7 +577,8 @@ console.log((5 * (F - 32) / 9).toFixed(5));
     var i = 0;
     var n = Number(prompt("请输入年数"));
     while(i < n){
-        var x = x + (x * 0.001)
+        i++;
+        var x = x + (x * 0.001);
     }
     console.log(x.toFixed(4))
 </script>
@@ -661,7 +662,7 @@ console.log((5 * (F - 32) / 9).toFixed(5));
         var x = Number(prompt("请输入x坐标"));
         var y = Number(prompt("请输入y的坐标"));
         var h = Number(prompt("请输入人数"));
-        xy = math.sqrt(Math.pow(x, 2));
+        xy = Math.sqrt(Math.pow(x, 2));
     }
     time = (1 * n + 0.5 * n + xy / 50).Math.ceil
     console.log(time) 
@@ -681,21 +682,146 @@ console.log((5 * (F - 32) / 9).toFixed(5));
     console.log(helf)
 </script>
 
-<script id="ch0105/21">
-    var N = Number(prompt("请输入一个正整数"))
-    while (true){
-        if (N == 1){
-            console.log("End")
-        break
+<script>
+    var i = 0;
+    var tool = 0;
+    var all =0;
+    var a = 0;
+    while (i < 12){
+        i ++;
+        money = Number(prompt("请输入每月预算"));
+        if ((300 - money + tool) < 0){
+            var a = i
         }
-        if(N % 2 == 0){
-            X = N
-            N = N / 2
-            console.log(X +  "/" + 2 + "=" + N)
-        }else{
-            X = N
-            N = N * 3 + 1
-            console.log(X + "*" + 3 + "+" + 1 + "=" + N)
-        } 
+        tool = tool + (300 - money);
+        if (tool >= 300){
+            tool -= 300
+            all = all + 300
+        }
+        else if (tool >= 200){
+            tool -= 200
+            all = all + 200
+        }else if (tool >=100){
+            tool -= 100;
+            all = all + 100;
+        }
+    }
+    if (a > 0){
+        console.log("-" + a)
+    }else{
+        console.log(all + tool + ((all) * 0.2));   
     }
 </script>
+
+<script id="ch0105/23">
+    var m = Number(prompt("请输入开始时药品的总量"));
+    var n = Number(prompt("请输入取药的人数"));
+    var last = 0;
+    var result = m;
+    var y = 0
+    for (var i = 0; i < n; i++){
+        var x = Number(prompt("请输入取药的数量"));
+        if (x > result){
+            y ++;
+            continue;
+        }
+        last =last + x;
+        result = m - last;
+    }
+    console.log(y);
+</script>
+
+<script id="ch0105/24">
+    var n = Number(prompt("请输入一个正整数"));
+    var i = 0;
+    var g = 0;
+    var b = 0;
+    while (i < n) {
+        i++;
+        var x = Number(prompt("请输入测量的收缩压"));
+        var y = Number(prompt("请输入测量的舒张压"));
+        if ((x >= 90 && x <= 140) && (y >= 60 && y <= 90)) {
+            g++
+        } else {
+                b = g;
+                g = 0
+        }
+    }
+    if (g > b){
+        console.log(g)
+    }else{
+        console.log(b)
+    }
+</script>
+
+<script id="ch0105/25">
+    var i = 0;
+    var a = 0;
+    var b = 0;
+    var c = 0;
+    var x = 0;
+    var y = 0;
+    var z = 0;
+    while(o < Math.pow(7, 3)){
+        i++;
+        x++;
+        a++
+        if (a == 7){
+            b++;
+            a = 0;
+        }
+        if (b == 7){
+            c ++;
+            b = 0;
+        }
+    
+        if (x == 9){
+            y++;
+            x = 0;
+        }
+        if (y == 9){
+            z++;
+            y = 0;
+        }
+        if (a == z && b == y && c == x){
+        console.log(a + b * 7 + c * Math.pow(7, 2));
+        console.log("" + c + b + a);
+        console.log("" + z + y + x);
+    }
+    }
+</script>
+
+<script id="ch0105/26">
+    var n = Number(prompt("请输入一个整数"));
+    var i = 0;
+    var y = 0;
+    while (i < n){
+        i++;
+        var x = Number(prompt("请输入一个四位数的值"));
+        var a = x % 10;
+        var b = Math.trunc(x * 0.1) % 10;
+        var c = Math.trunc(x * 0.01) % 10;
+        var d = Math.trunc(x * 0.001) % 10;
+        if ((a - d - c - b) > 0){
+            y ++
+        }
+    }
+    console.log(y);
+</script>
+
+<script id="ch0105/27">
+    var k = Number(prompt("请输入一个整数"));
+    var m = Infinity;
+    var i = 1;
+    var Sn = 1;
+    while (i < m){
+        i ++;
+        debugger;
+        Sn = Sn + 1 / i
+        if (Sn > k){
+            console.log(i);
+            break;
+        }
+    }
+</script>
+
