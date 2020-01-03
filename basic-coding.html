@@ -682,7 +682,26 @@ console.log((5 * (F - 32) / 9).toFixed(5));
     console.log(helf)
 </script>
 
-<script>
+<script id="ch0105/21">
+    var N = Number(prompt("请输入一个正整数"))
+    while (true){
+        if (N == 1){
+            console.log("End")
+        break
+        }
+        if(N % 2 == 0){
+            X = N
+            N = N / 2
+            console.log(X +  "/" + 2 + "=" + N)
+        }else{
+            X = N
+            N = N * 3 + 1
+            console.log(X + "*" + 3 + "+" + 1 + "=" + N)
+        } 
+    }
+</script>
+
+<script id="ch0105/22">
     var i = 0;
     var tool = 0;
     var all =0;
