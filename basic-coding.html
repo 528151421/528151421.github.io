@@ -845,6 +845,336 @@ console.log((5 * (F - 32) / 9).toFixed(5));
     }
 </script>
 
-<script>
+<script id="ch0105/28">
+    var n = Number(prompt("请输入一个整数"));
+    var x = ""; 
+    while(n > 0){
+        var m = n % 10;
+        x += (m + " ");
+        n = Math.trunc(n * 0.1);
+    }
+    console.log(x)
+</script>
 
+<script id="ch0105/29">
+    var n = Number(prompt("请输入一个整数"));
+    var x = "", bool = false;
+    if (n < 0) {
+        x += "-";
+    }
+    while (Math.abs(n) > 0) {
+        var m = Math.abs(n) % 10;
+        debugger;
+        if (m == 0 && bool) {
+            x += m
+        } else if (m != 0) {
+            bool = true;
+            x += m
+        }
+        n = Math.trunc(n * 0.1)
+    }
+
+    console.log(x)
+</script>
+
+<script id="ch0105/30">
+    var m = Number(prompt("请输入正整数m"));
+    var k = Number(prompt("请输入正整数k"));
+    var i = 0;
+    var x = 0;
+    debugger;
+    if (m % 19 !== 0){
+        console.log("NO")
+    }
+    for(i < 5;m !== 0;){
+        i ++
+        var n = m % 10;
+        if (n === 3){
+            x++;
+        }
+        m = Math.trunc(m * 0.1);
+    }
+    if (k === x){
+        console.log("YES")
+    }else{
+        console.log("NO")
+    }
+</script>
+
+<script id="ch0105/31">
+    var N = Number(prompt("请输入有多少盏灯"));
+    var M = Number(prompt("请输入操作的人数"));
+    var i = 1;
+    var result = "1"
+    while( i < M){
+        i++;
+        var x = 2;
+        var a = 0;
+        while (x <= i){
+            if (i % x == 0){
+                a++
+            }
+            x++;
+            }
+            if (a!== 0 && a % 2 == 0){
+                result += ("," + i)
+        }
+    }
+    console.log(result)
+</script>
+
+<script id="ch0105/32">
+    var n = Number(prompt("请输入序列的第n项"));
+    var q1 = 2;                                
+    var p1 = 1;
+    var i = 0;
+    var Sn = 0;
+    while(i < n){
+        i++;
+        var x = q1 / p1;
+        Sn = Sn + x;
+        q1 = q1 + p1;
+        p1 = q1 - p1
+    }       
+    console.log(Sn.toFixed(4))   
+</script>
+
+<script id="ch0105/33">
+    var n = Number(prompt("请输入一个正整数n"));
+    var i = 0;
+    var result = 0;
+    while(i < n){
+        i++;
+        var y = 1 / i
+        if (i % 2 === 0){
+            result = result - y
+        }else{
+            result = result + y
+        }
+    }
+    console.log(result.toFixed(4))
+</script>
+
+<script id="ch0105/34">
+    var n = Number(prompt("请输入正整数n"));
+    var i = 0;
+    var m = 0;
+    var result = 1;
+    var y = 0;
+    while (m < n){
+        m++;
+        while(i < m){
+            i ++;
+            result = result * i
+        }
+        y = y + result
+    }
+    console.log(y)
+</script>
+
+<script id="ch0105/35">
+     var n = Number(prompt("请输入正整数n"));
+    var i = 0;
+    var m = 0;
+    var y = 1;
+    var result = 0;
+    var e = 1;
+    while (m < n){
+        m++;
+        while(i < m){
+            i ++;
+            y = y * i
+        }
+        result = 1 / y;
+        e = e + result;
+    }
+    console.log(e.toFixed(10))
+</script>
+
+<script id="ch0105/36">
+    var x = Number(prompt("请输入一个浮点数x"));
+    var n = Number(prompt("请输入一个正整数n"));
+    var i = 0;
+    var result = 0;
+    while ( n >= 0){
+        var y = Math.pow(x , n)
+        n --;
+        result = result + y
+    }
+    console.log(result.toFixed(2))
+</script>
+
+<script id="ch0105/37">
+    var M = Number(prompt("请输入雇佣兵最大体力值"));
+    var N = Number(prompt("请输入战斗天数"));
+    var X = Number(prompt("请输入能源元素数量"));
+</script>
+
+<script id="ch0105/38">
+</script>
+
+<script id="ch0105/39">
+    var n = Number(prompt("请输入一个正整数"));
+    var i = 0;
+    var result = 0;
+    while (i < n) {
+        i++; 
+        if (i % 7 !== 0) {  
+            var x = i, bool = false; //先筛选出不被7整除的数x
+            while (x >= 1) {   // 如果小于1那就没有位数了
+                var y = x % 10;   //用 % 筛选出含有7的数
+                if (y == 7) {     
+                    bool = true; // 这个数里含有7的话 
+                    break;         //布尔值为真，并且中止此循环，
+                }
+                x = (x - y) / 10; //接着筛选出后面位数的数值
+            }
+            if (!bool) {    //当上面含有7的 布尔值为真 所以这里!bool为非真(即假) 那就不输出下面的内容了
+                result += Math.pow(i, 2);
+            }
+        } 
+    }
+    console.log(result)
+</script>
+
+<script id="ch0105/40">
+    var n = Number(prompt("给定一个十进制正整数n"));
+    var i = 0;
+    var result = 0;
+    while(i < n){
+        i++;
+        var x = i;
+        while(x >= 1){
+            var y = x % 10;
+            if (y === 1){
+                result++
+            }
+            x = (x - y) / 10
+        }
+    }
+</script>
+
+<script id="ch0105/41">
+    var L = Number(prompt("请输入起始值L"));
+    var R = Number(prompt("请输入终值R"));
+    var x = R - L;
+    var i = 0;
+    var result = 0;
+    while(i <= x){
+        i++;
+        y = L;
+            while(y >= 1){
+            var k = y % 10;
+                if (k === 2){
+                    result++;
+                }
+            y = (y - k) / 10
+            }
+        L++
+    }
+    console.log(result)
+</script>
+
+<script id="ch0105/42">
+    var a = Number(prompt("请输入矩形宽度"));
+    var b = Number(prompt("请输入矩形的高"));
+    var c = prompt("请输入矩形符号");
+    var d = Number(prompt("请输入"));
+    var ai = 0;
+    var x = ""
+    var bi = 0;
+    var ci = 0;
+    var y = ""
+    var z = ""
+    var zi = ""
+    var zq = ""
+    var result = ""
+    while (ai < a){
+        ai++;
+        x += c
+    }
+    if (d === 1){
+            while(bi < b){
+                bi++;
+                z += (x + "\n")
+            }
+            console.log(z)
+        }else if (d === 0){
+            while (ci < a-2){
+                ci++;
+                zi += " "
+            }
+                zq = c + zi + c
+            while(bi < (b-2)){
+                bi++;
+                result += zq + "\n"
+            }
+            console.log(x);
+            console.log(result);
+            console.log(x);
+        }
+</script>
+
+<script id="ch105/43">
+    var n = Number(prompt("请输入正整数"));
+    var i = n;
+    while (i > 2 ){
+        i --;
+        if (n % i === 0){
+            console.log(i);
+            break;
+        }
+    }
+</script>
+
+<script id="ch0105/44">
+    var n = Number(prompt("请输入一个正整数"));
+    var i = 2;
+    var y = 1;
+    while(true){
+        i++;
+        debugger;
+        var bool = true;
+        var m = (i / 2);
+        var x = 1;
+        while(x <= m){
+            x++;
+            if (i % x == 0){
+                bool = false;
+                break;
+            }
+        }
+        if (bool){
+        y++
+            if (y === n){
+                console.log(i)
+                break
+            }
+        }
+    }
+</script>
+
+<script id="ch0105/45"> 
+    var n = Number(prompt("请输入第n天"));
+    var i = 0;
+    var c = 0;
+    var result = 0;
+    var bool = false;
+    while (i < n){
+        i++;
+        var a = 0;
+        while(a < i){
+            a++;
+            c ++;
+            result += i
+            if (c === n){
+                bool = true;
+                break
+            } 
+        }
+    if (bool){
+        console.log(result);
+        break;
+    }
+    }
 </script>
