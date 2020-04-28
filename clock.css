@@ -1,0 +1,105 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+html,body{
+    width: 100%;
+    height: 100%;
+}
+.clock-box{
+    width: 434px;
+    height: 442px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -221px;
+    margin-left: -217px;
+    background-color: rgb(205,205,205);
+    padding: 36px;
+    box-sizing: border-box;
+}
+.clock-num{
+    border-radius: 50%;
+    height: 360px;
+    position: relative;
+    width: 360px;
+    background: #ffffff url(https://cssanimation.rocks/images/posts/clocks/ios_clock.svg) no-repeat center;
+    background-size: 90%;
+}
+.clock-num::after{
+    content: "";
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    top: 50%;
+    left: 50%;
+    margin-top: -9px;
+    margin-left: -9px;
+    background-color: black;
+    border-radius: 50%;
+}
+
+@keyframes second{
+    from{
+        transform: rotatez(0deg)
+    }
+    1.6%{
+        transform: rotatez(10deg)
+    }
+    1.6%{
+        transform: rotatez(6deg)
+    }
+    to{transform: rotatez(360deg)
+    }
+}
+.second{
+    animation-duration: 60s;
+    animation: minute 60s infinite steps(60);
+    position: absolute;
+    width: 3px;
+    height: 180px;
+    left: 179px;
+    top: 30px;
+    background-color: black;
+    transform-origin: 2px 150px ;
+}
+@keyframes minute{
+    from{
+        transform: rotatez(0deg)
+    }
+    to{transform: rotatez(360deg)
+    }
+}
+.minute{
+    animation-name: minute;
+    animation-duration: 3600s;
+    animation-iteration-count:999;
+    transition-timing-function:linear;
+    position: absolute;
+    width: 5px;
+    height: 120px;
+    left: 179px;
+    top:60px;
+    background-color: black;
+    transform-origin: 3px 120px ;
+}
+@keyframes hours{
+    from{
+        transform: rotatez(0deg)
+    }
+    to{transform: rotatez(360deg)
+    }
+}
+.hours{
+    animation-name: hours;
+    animation-duration: 43200s;
+    animation-iteration-count:999;
+    transition-timing-function:linear;
+    position: absolute;
+    width: 7px;
+    height: 100px;
+    left: 179px;
+    top:80px;
+    background-color: black;
+    transform-origin: 4px 100px ;
+}

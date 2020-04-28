@@ -1,0 +1,148 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+html,body{
+    width: 100%;
+    height: 100%;
+    font-family: 'Helvetica Neue', Helvetica, 'PingFang SC', 'Microsoft Yahei', 'WenQuanYi Micro Hei', Arial, Verdana, sans-serif;
+    font-size: 16px;
+}
+a{
+    text-decoration: none;
+    color: inherit;
+}
+.home{
+    background: url(https://mobike.com/cn/assets/themes/moby/img/landing/hero-bg-4.jpg) 70% 80% no-repeat;
+    width: 100%;
+    height: 80%;
+    position: relative;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-size: cover;
+    overflow: hidden;
+}
+.container{
+    width: 1080px;
+    margin: auto;
+}
+.text{
+   float: left;
+    padding: 20px 0 0 0;
+}
+.product{
+    position: relative;
+}
+.product:hover>.product-list{
+    display: block; 
+}
+
+.title{
+    display: inline-block;
+    float: right;
+}
+.title > *{
+    display: inline-block;
+    padding: 20px 20px;
+    transition: color .2s ease;
+    color: #fff;
+}
+.product-list{
+    position: absolute;
+    top: 100%;
+    left: -5px;
+    min-width: 240px;
+    padding: 15px 0 0 15px;
+    transition: 1s ease;
+    display: none;
+    color: #000;
+    background-color: #ffffff;
+    box-shadow: 0 6px 10px 0 rgba(0, 0, 0, .1);
+}
+.product-list a{
+    display: inline-block;
+    width: 240px;
+    height: 71px;
+}
+.product-list:hover{
+    display: block; 
+}
+.product-list p{
+    font-size: 20px;
+}
+.product-list p:hover{
+    color: rgb(226,61,14);
+}
+.product-list span{
+    font-size: 14px;
+    opacity: .5;
+}
+.heading-warp {
+    color: #ffffff;
+    flex-direction: column;
+    padding-top: 30vh;
+    float: left;  
+}
+h1{
+    font-size: 360%;
+    font-weight: bold;
+    margin-left: -2px;
+    letter-spacing: -.04em;
+    -webkit-hyphens: none;
+    hyphens: none;
+    -webkit-font-smoothing: antialiased;
+    -ms-hyphens: none;
+}
+.heading-warp a{
+    font-size: 22px;
+    font-weight: bold;
+    padding: 14px 26px;
+    letter-spacing: .1em;
+    border-radius: 6px;
+    box-shadow: rgba(59, 54, 48, 0.6) 0px 6px 30;
+    background-color:rgba(0, 0, 0, .6);
+}
+.headline-news{
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    background: rgba(106, 73, 76, 0.4);
+    width: 100vw;
+    height: 45px;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, .2);
+    color: #fff;
+    display: inline-block;
+    line-height: 45px;
+}
+.four-pic{
+    margin-top: 2px;
+    width: 100%;
+    display: inline-block;
+    font-size: 0;
+}
+.four-pic a {
+    display: inline-block;
+    width: calc(calc(100% - 6px) / 4);
+    margin-left: 2px;
+}
+.four-pic a:first-child{
+    margin-left: 0;
+}
+.four-pic div{
+    height: 460px;
+}
+.brand{
+    background-image: url(https://mobike.com/cn/assets/themes/moby/img/promo-01.jpg);
+   
+}
+.keji{
+    background-image: url(https://mobike.com/cn/assets/themes/moby/img/promo-02.jpg);
+}
+.life{
+    background-image: url(https://mobike.com/cn/assets/themes/moby/img/promo-03.jpg);
+}
+.xiaozhao{
+    background-image: url(https://mobike.com/cn/assets/themes/moby/img/promo-04.jpg);
+}

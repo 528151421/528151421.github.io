@@ -1,0 +1,251 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+html,body{
+    width: 100%;
+    height: 100%;
+    background-image: url(bg.jpg)
+}
+.box{
+    position: relative;
+    width: 640px;
+    height: 440px;
+    box-sizing: border-box;
+    border: 20px solid #ffff;
+    top: 50%;
+    left: 50%;
+    margin-top: -220px;
+    margin-left: -320px;
+    text-align: center;
+    font-family: Cambria, Palatino, "Palatino Linotype", "Palatino LT STD", Georgia, serif;
+    overflow: hidden;
+}
+input{
+    display: none;
+}
+.b1{
+    font-style: italic;
+    width: 150px;
+    height: 2px;
+    cursor: pointer;
+    color: #fff;
+    line-height: 33px;
+    font-size: 24px;
+    float: left;
+    position: relative;
+    margin-top: 350px;
+    z-index: 1000;
+}
+.b2{
+    font-style: italic;
+    width: 150px;
+    height: 2px;
+    cursor: pointer;
+    color: #fff;
+    line-height: 33px;
+    font-size: 24px;
+    float: left;
+    position: relative;
+    margin-top: 350px;
+    z-index: 1000;
+}
+.b3{
+    font-style: italic;
+    width: 150px;
+    height: 2px;
+    cursor: pointer;
+    color: #fff;
+    line-height: 33px;
+    font-size: 24px;
+    float: left;
+    position: relative;
+    margin-top: 350px;
+    z-index: 1000;
+}
+.b4{
+    font-style: italic;
+    width: 150px;
+    height: 2px;
+    cursor: pointer;
+    color: #fff;
+    line-height: 33px;
+    font-size: 24px;
+    float: left;
+    position: relative;
+    margin-top: 350px;
+    z-index: 1000;
+}
+.b1::after{
+    content: "";
+    width: 34px;
+    height: 34px;
+    background: rgba(130,195,217,0.9);
+    position: absolute;
+    left: 50%;
+    margin-left: -18px;
+    border-radius: 50%;
+    box-shadow: 0px 0px 0px 4px rgba(255,255,255,0.3);
+    z-index: -1;
+}
+.b2::after{
+    content: "";
+    width: 34px;
+    height: 34px;
+    background: rgba(130,195,217,0.9);
+    position: absolute;
+    left: 50%;
+    margin-left: -18px;
+    border-radius: 50%;
+    box-shadow: 0px 0px 0px 4px rgba(255,255,255,0.3);
+    z-index: -1;
+}
+.b3::after{
+    content: "";
+    width: 34px;
+    height: 34px;
+    background: rgba(130,195,217,0.9);
+    position: absolute;
+    left: 50%;
+    margin-left: -18px;
+    border-radius: 50%;
+    box-shadow: 0px 0px 0px 4px rgba(255,255,255,0.3);
+    z-index: -1;
+}
+.b4::after{
+    content: "";
+    width: 34px;
+    height: 34px;
+    background: rgba(130,195,217,0.9);
+    position: absolute;
+    left: 50%;
+    margin-left: -18px;
+    border-radius: 50%;
+    box-shadow: 0px 0px 0px 4px rgba(255,255,255,0.3);
+    z-index: -1;
+}
+.box input:nth-child(1):checked+label{
+    color: #68abc2; ;
+}
+.box input:nth-child(1):checked+label::after{
+    background: #fff;
+    box-shadow: 0px 0px 0px 4px rgba(104,171,194,0.6);
+}
+.box input:nth-child(3):checked+label{
+    color: #68abc2; ;
+}
+.box input:nth-child(3):checked+label::after{
+    background: #fff;
+    box-shadow: 0px 0px 0px 4px rgba(104,171,194,0.6);
+}
+.box input:nth-child(5):checked+label{
+    color: #68abc2; ;
+}
+.box input:nth-child(5):checked+label::after{
+    background: #fff;
+    box-shadow: 0px 0px 0px 4px rgba(104,171,194,0.6);
+}
+.box input:nth-child(7):checked+label{
+    color: #68abc2; ;
+}
+.box input:nth-child(7):checked+label::after{
+    background: #fff;
+    box-shadow: 0px 0px 0px 4px rgba(104,171,194,0.6);
+}
+.out{
+    width: 150px;
+    height: 400px;
+    top: 0;
+    position: absolute;
+    overflow: hidden;
+}
+.p2-box{
+    left: 150px;
+}
+.p3-box{
+    left: 300px;
+}
+.p4-box{
+    left: 450px;
+}
+.one,.two{
+    width: 150px;
+    height: 400px;
+}
+.p1-box .p1{
+    background: url(https://tympanus.net/Tutorials/CSS3SlidingImagePanels/images/1.jpg) 0 0;
+}
+.p2-box .p2{
+    background: url(https://tympanus.net/Tutorials/CSS3SlidingImagePanels/images/1.jpg) -150px 0;
+}
+.p3-box .p3{
+    background: url(https://tympanus.net/Tutorials/CSS3SlidingImagePanels/images/1.jpg) -300px 0;
+}
+.p4-box .p4{
+    background: url(https://tympanus.net/Tutorials/CSS3SlidingImagePanels/images/1.jpg) -450px 0;
+}
+.one{
+    margin-left: -150px;
+    transition: 1s;
+}
+.box input:nth-child(1):checked~.left .out .one{
+    margin-left: 0;
+}
+.box input:nth-child(1):checked~.left .first{
+    z-index: 1;
+}
+.pi1-box .pi1{
+    background: url(https://tympanus.net/Tutorials/CSS3SlidingImagePanels/images/2.jpg) 0 0;
+}
+.pi2-box .pi2{
+    background: url(https://tympanus.net/Tutorials/CSS3SlidingImagePanels/images/2.jpg) -150px 0;
+}
+.pi3-box .pi3{
+    background: url(https://tympanus.net/Tutorials/CSS3SlidingImagePanels/images/2.jpg) -300px 0;
+}
+.pi4-box .pi4{
+    background: url(https://tympanus.net/Tutorials/CSS3SlidingImagePanels/images/2.jpg) -450px 0;
+}
+.box input:nth-child(1):checked~.left .out .one{
+    margin-left: 0;
+}
+.pi1-box{
+    left: 0;
+}
+.pi2-box{
+    left:150px;
+}
+.pi3-box{
+    left: 300px;
+}
+.pi4-box{
+    left: 450px;
+}
+.box input:nth-child(3):checked~.left .second{
+    z-index: 1;
+}
+.two{
+    margin-left: -150px;
+    transition: 1s;
+}
+.box input:nth-child(3):checked~.left .second .two{
+    margin-left: 0;
+}
+@keyframes move{
+    from{
+        transform: translate(150px,0);
+    }
+    to{
+        transform: translate(300px,0);
+    }
+}
+.box input:nth-child(1):checked~.left .out .two{
+    animation-name: move;
+    animation-duration: 1s;
+    animation-timing-function: linear;
+}
+.box input:nth-child(3):checked~.left .out .one{
+    animation-name: move;
+    animation-duration: 1s;
+    animation-timing-function: linear;
+}

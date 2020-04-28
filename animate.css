@@ -1,0 +1,50 @@
+html,body{
+    width: 100%;
+    height: 100%;
+}
+
+@keyframes jump{
+    from{
+        transform: translate(0 , 0);
+    }
+    20%{
+        transform: translate(0 , -40px);
+    }
+    30%{
+        transform: translate(0 , -40px);
+    }
+    50%{
+        transform: translate(0px , 0);
+    }
+    50%{
+        transform: translate(0px , 0);
+    }
+    70%{
+        transform: translate(0px , -20px);
+    }
+    80%{
+        transform: translate(0px , -20px);
+    }
+    90%{
+        transform: translate(0px , 0px);
+    }
+    95%{
+        transform: translate(0px , -3px);
+    }
+    to{
+        transform: translate(0 , 0);
+    }
+}
+h1{
+    animation: jump 1s steps(4);
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    line-height: 50vh;
+    text-align: center;
+    font-size: 90px;
+    font-weight: 900;
+    background-image: -webkit-gradient(linear, 0 0, 0 bottom, from(rgba(0, 128, 0, 1)), to(rgba(90, 09, 90, 1)));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}

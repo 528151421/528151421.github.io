@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style type="text/css">
+        html,body{
+            height: 100%;
+        }
+        .out{
+            position: relative;
+            top: 50%;
+            left: 50%;
+            margin-top: -250px;
+            margin-left: -250px;
+            width: 2px;
+            height:500px;
+            border: 1px solid;
+            transform-style: preserve-3d;
+            animation-name: rote;
+            animation-duration: 5s;
+            animation-timing-function: linear;
+            animation-iteration-count: 999;
+        }
+        .in-box{
+            width: 500px;
+            height: 500px;
+            visibility: 0.5;
+            background: url(https://img12.360buyimg.com/n1/jfs/t1/17501/8/9690/113558/5c80e3a2E43b16c89/05d2d54a345fb57b.jpg) no-repeat;
+            background-size: contain;
+            transform:translatez(400px);
+            animation-name: self;
+            animation-duration: 5s;
+            animation-timing-function: linear;
+            animation-iteration-count: 999;
+            
+        }
+        @keyframes rote{
+            from{
+                transform:rotatez(0)
+            }
+            to{
+                transform:rotatez(360deg)
+            }
+        }
+        @keyframes self{
+            from{
+                transform:rotateZ(0) ;
+            }
+            to{
+                transform:rotateZ(-360deg) ;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <div class="out">
+        <nav class="in-box"></nav>
+    </div>
+</body>
+</html>

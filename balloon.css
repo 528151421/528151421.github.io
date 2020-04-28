@@ -1,0 +1,52 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+html,body{
+    height: 100%;
+    width: 100%;
+}
+.one{
+    position: relative;
+    left: 50%;
+    top: 10%;
+}
+button{
+    position: relative;
+    width: 180px;
+    height: 38px;
+    background-color: rgb(183,18,18);
+    line-height: 38px;
+    text-align: center;
+    color: #ffffff;
+}
+button::after{
+    content: "Whats up!";
+    position: absolute;
+    left: 50%;
+    margin-left: -40px;
+    display: inline-block;
+    text-align: center;
+    line-height: 30px;
+    top: -40px;
+    width:80px;
+    height: 30px;
+    background-color: black;
+    opacity: 0;
+}
+button::before{
+    content: "";
+    position: absolute;
+    border: 1px solid black;
+    border-color:black transparent transparent transparent ;
+    left: 50%;
+    margin-left: -5px;
+    top: -10px;
+    transition: 1s;
+}
+button:hover::after{
+    opacity: 1;
+}
+button:hover::before{
+    border: 5px;
+}
