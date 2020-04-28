@@ -1,4 +1,4 @@
-var jingtao159 = {
+var jiangtao159 = {
     /**
      * 
      * @param {Array} ary 
@@ -19,5 +19,23 @@ var jingtao159 = {
             }
         }
         return newAry
-    }
+    },
+    /**
+     * 
+     * @param {Array} nums 
+     * @returns{Array}
+     */
+    compact : function (nums){
+        var res = [];
+        var len = nums.length;
+        for(var i = 0 ; i < len;i++){
+            if(nums[i] == false && nums[i] == 0){
+                continue
+            }else{
+              res.push(nums[i])
+            }
+        }
+        return res
+    },
+
 }
