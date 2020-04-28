@@ -401,13 +401,13 @@ input{
 .product-nav{
     position: absolute;
     width: 100%;
-    height:1px;
+    height:0px;
     left: 0;
     overflow: hidden;
     background-color: #fff;
     transition:.3s; 
     z-index: 8888;
-    border-top: 1px rgb(255,255,255) solid ;
+    border-top: rgb(255,255,255) solid ;
 }
 .header-bg:hover .product-nav{
     height: 230px;
@@ -1134,6 +1134,7 @@ h2{
     font-size: 16px;
     color:#ff6700;
     border-bottom: 2px solid#ff6700;
+    transition: 0s 999s;
 } 
 .appliances > span:nth-child(3){
     position: absolute;
@@ -1141,6 +1142,7 @@ h2{
     right: 0;
     top: 18px;
     font-size: 16px;
+    transition: 0s 999s;
 } 
 .appliances > span:nth-child(2):hover~div .appliances-hot-sale{
     display: flex;
@@ -1151,6 +1153,7 @@ h2{
 .appliances > span:nth-child(2):hover{
     color:#ff6700;
     border-bottom: 2px solid#ff6700;
+    transition:none;
 }
 .appliances > span:nth-child(2):hover+span{
     color:#424242;
@@ -1165,6 +1168,7 @@ h2{
 .appliances > span:nth-child(3):hover{
     color:#ff6700;
     border-bottom: 2px solid#ff6700;
+    transition:none;
 }
 .appliances:hover :nth-child(2){
     color:#424242;
@@ -1392,6 +1396,7 @@ background: url(https://s02.mifile.cn/assets/static/image/slogan2016.png) no-rep
     right: 0;
     width: 105px;
     height: 175px;
+    z-index: 9999999999;
 }
 .side li{
     width: 85px;
