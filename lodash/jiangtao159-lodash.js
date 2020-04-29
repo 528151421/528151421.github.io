@@ -246,7 +246,5 @@ var jiangtao159 = {
             }
         }
         return -1
-    },
-
-
+    }
 }
