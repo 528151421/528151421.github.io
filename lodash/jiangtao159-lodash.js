@@ -429,4 +429,101 @@ var jiangtao159 = {
             }
         }
     },
+
+    /**
+     * 
+     * @param {Array} array
+     * @returns {Array} 
+     */
+    tail : function(array){
+        let res = [];
+        for(var i = 1; i < array.length;i++){
+            res.push(array[i])
+        }
+        return res
+    },
+
+    /**
+     * 
+     * @param {Array} array 
+     * @param {Number} n
+     * @returns {Array} 
+     */
+    take : function(array, n = 1){
+        let res = array.slice()
+        res.length = n;
+        return res
+    },
+
+    /**
+     * 
+     * @param {Array} array 
+     * @param {Number} n
+     * @returns {Array} 
+     */
+    takeRight : function(array, n = 1) {
+        let temp = (array.length - n) < 0 ? 0 : (array.length - n)
+        let res = [];
+        for (let i = temp;i < array.length;i++){
+            res.push(array[i])
+        }
+        return res
+    },
+
+    /**
+     * 
+     * @param  {Array} array
+     * @returns {Array} 
+     */
+    union : function(...array){
+        let args = Array.from(arguments);
+        let map = {}
+        let res = []
+        for(var i = 0; i < args.length;i++){
+            for(var j = 0; j < args[i].length;j++){
+                if(!map[args[i][j]]){
+                    res.push(args[i][j])
+                    map[args[i][j]] = true;
+                }
+            }
+        }
+        return res
+    },
+
+    /**
+     * 
+     * @param {Array} array
+     * @return {Array} 
+     */
+    uniq : function(array){
+        let map = {};
+        let res = [];
+        for(let i = 0; i < array.length;i++){
+            if(!map[array[i]]){
+                res.push(array[i])
+                map[array[i]] = true
+            }
+        }
+        return res
+    },
+
+    /**
+     * 
+     * @param {Array} array 
+     * @param  {...any} value
+     * @returns {Array} 
+     */
+    without : function(array,...value){
+        let map = {};
+        let res = [];
+        for(let i = 1;i < arguments.length;i++){
+            map[arguments[i]] = true
+        }
+        for(let j = 0; j < array.length;j++){
+            if(!map[array[j]]){
+                res.push(array[j])
+            }
+        }
+        return res
+    }
 }
