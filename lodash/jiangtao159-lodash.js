@@ -382,7 +382,7 @@ var jiangtao159 = {
      * @returns {Number} 
      */
     sortedLastIndexOf : function(array, value){
-        if(value > array.length - 1 || value < array[0]){
+        if(value > array[array.length - 1] || value < array[0]){
             return -1
         }
         if(value == array[0]){
@@ -392,9 +392,9 @@ var jiangtao159 = {
         let height = array.length - 1;
         while(low < height){
             let mid = Math.floor((height - low) / 2) + low;
-            if(array[mid] == value && array[mid] > array[mid - 1]){
+            if(array[mid] == value && array[mid] < array[mid + 1]){
                 return mid;
-            }else if(array[mid] <= value){
+            }else if(array[mid] < value){
                 height = mid;
             }else{
                 low = mid;
