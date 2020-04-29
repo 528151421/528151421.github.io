@@ -230,7 +230,7 @@ var jiangtao159 = {
     join : function(array, separator=','){
         var res = ""
         for(var i = 0; i < array.length - 1;i++){
-            res += array[i] + separator
+            res += "" + array[i] + separator
         }
         res += array[array.length - 1]
         return res
