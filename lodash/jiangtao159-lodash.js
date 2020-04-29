@@ -18,7 +18,7 @@ var jiangtao159 = {
                 count = 0
             }
         }
-        if(temp){
+        if(temp.length){
             newAry.push(temp)
         }
         return newAry
@@ -33,7 +33,7 @@ var jiangtao159 = {
         var res = [];
         var len = nums.length;
         for(var i = 0 ; i < len;i++){
-            if(nums[i] == false && isNaN(nums[i])){
+            if(nums[i] == false || isNaN(nums[i])){
                 continue
             }else{
               res.push(nums[i])
@@ -167,10 +167,21 @@ var jiangtao159 = {
      * @returns{number}
      */
     indexOf : function(array, value, fromIndex=0){
+        if(fromIndex < 0){
+            fromIndex = 0
+        }
         var len = array.length;
-        for(var i = fromIndex;i < len;i++){
-            if(array[i] == value){
-                return i
+        if(isNaN(value)){
+            for(var i = fromIndex;i < len;i++){
+                if(isNaN(array[i])){
+                    return i
+                }
+            }
+        }else{
+            for(var i = fromIndex;i < len;i++){
+                if(array[i] == value){
+                    return i
+                }
             }
         }
         return -1
@@ -218,10 +229,10 @@ var jiangtao159 = {
      */
     join : function(array, separator=','){
         var res = ""
-        for(var i = 0; i < array - 1;i++){
+        for(var i = 0; i < array.length - 1;i++){
             res += array[i] + separator
         }
-        res + array[array.length - 1]
+        res += array[array.length - 1]
         return res
     },
 
@@ -240,9 +251,20 @@ var jiangtao159 = {
      * @returns {Number}
      */
     lastIndexOf : function(array, value, fromIndex = array.length-1){
-        for(var i = fromIndex; i >=0;i--){
-            if(array[i] == value){
-                return i
+        if(fromIndex > array.length-1){
+            fromIndex = array.length-1
+        }
+        if(isNaN(value)){
+            for(var i = fromIndex; i >=0;i--){
+                if(isNaN(array[i])){
+                    return i
+                }
+            }
+        }else{
+            for(var i = fromIndex; i >=0;i--){
+                if(array[i] == value){
+                    return i
+                }
             }
         }
         return -1
