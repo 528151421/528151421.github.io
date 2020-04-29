@@ -138,7 +138,7 @@ var jiangtao159 = {
      * @param {Array} array
      * @returns{Array}
      */
-    flatten = function(array){
+    flatten : function(array){
         var res = [];
         var len = array.length;
         for(var i = 0; i < len;i++){
@@ -156,7 +156,7 @@ var jiangtao159 = {
     /** 
      * @param {Array} array
      */
-    head = function(array){
+    head : function(array){
         return array[0]
     },
 
@@ -166,7 +166,7 @@ var jiangtao159 = {
      * @param {Number} fromIndex
      * @returns{number}
      */
-    indexOf = function(array, value, fromIndex=0){
+    indexOf : function(array, value, fromIndex=0){
         var len = array.length;
         for(var i = fromIndex;i < len;i++){
             if(array[i] == value){
@@ -180,7 +180,7 @@ var jiangtao159 = {
      * @param {Array} ary
      * @returns {Array}
      */
-    initial = function(ary){
+    initial : function(ary){
         var res = [];
         var len = ary.length;
         for(var i = 0; i < len - 1;i++){
@@ -193,7 +193,7 @@ var jiangtao159 = {
      * @param {Array} ...Array
      * @returns {Array}
      */
-    intersection = function(ary){
+    intersection : function(ary){
         var res = []
         var args = Array.from(arguments);
         for(var i = 0; i < args[0].length;i++){
@@ -216,7 +216,7 @@ var jiangtao159 = {
      * @param {value} separator
      * @returns {string}
      */
-    join = function(array, separator=','){
+    join : function(array, separator=','){
         var res = ""
         for(var i = 0; i < array - 1;i++){
             res += array[i] + separator
@@ -229,7 +229,7 @@ var jiangtao159 = {
      * @param {Array} array
      * @returns {value}
      */
-    last = function(array){
+    last : function(array){
         return array[array.length - 1]
     },
 
@@ -239,7 +239,7 @@ var jiangtao159 = {
      * @param {Number} fromIndex
      * @returns {Number}
      */
-    lastIndexOf = function(array, value, fromIndex=array.length-1){
+    lastIndexOf : function(array, value, fromIndex = array.length-1){
         for(var i = fromIndex; i >=0;i--){
             if(array[i] == value){
                 return i
