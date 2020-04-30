@@ -451,7 +451,7 @@ var jiangtao159 = {
      */
     take : function(array, n = 1){
         let res = array.slice()
-        res.length = n;
+        res.length = res.length > n ? res.length : n;
         return res
     },
 
@@ -525,5 +525,43 @@ var jiangtao159 = {
             }
         }
         return res
-    }
+    },
+
+    /**
+     * 
+     * @param  {Array} array
+     * @returns {Array} 
+     */
+    zip : function(...array){
+        let max = 0
+        for(let i = 0; i < arguments.length;i++){
+            max = max > arguments[i].length ? max : arguments[i].length
+        }
+        let res = Array(max);
+        for(let i = 0;i < max;i++){
+            for(let j = 0; j < arguments.length;j++){
+                if(!res[i]){
+                  res[i] = []
+                }
+                res[i].push(arguments[j][i])
+            }
+        }
+        return res
+    },
+
+    /**
+     * 
+     * @param {Array} props 
+     * @param {Array} values
+     * @returns {Object} 
+     */
+    zipObject : function(props, values){
+        let obj = {};
+        for(let i = 0; i < props.length;i++){
+            obj[props[i]] = values[i]
+        }
+        return obj
+    },
+
+    
 }
