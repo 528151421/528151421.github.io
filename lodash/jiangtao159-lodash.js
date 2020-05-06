@@ -451,7 +451,7 @@ var jiangtao159 = {
      */
     take : function(array, n = 1){
         let res = array.slice()
-        res.length = res.length > n ? res.length : n;
+        res.length = array.length > n ? array.length : n;
         return res
     },
 
@@ -563,5 +563,70 @@ var jiangtao159 = {
         return obj
     },
 
-    
+    /**
+     * 
+     * @param {Array} array 
+     * @param {Number} value
+     * @returns {Number} 
+     */
+    sortedIndexOf : function(array, value){
+        let left = 0;
+        let right = array.length - 1;
+        while(right - left > 1){
+            let mid = Math.floor((right - left) / 2) + left
+            if(array[mid] == value && array[mid] > array[mid - 1]){
+                return mid
+            }else if(array[mid] >= value){
+                right = mid
+            }else{
+                left = mid
+            }
+        }
+        if(array[right] == value && array[right] > array[left]){
+          return right;
+        }else if(array[left] == value){
+          return left;
+        }else{
+          return -1
+        }
+    },
+
+    /**
+     * 
+     * @param {Array} array
+     * @returns {Array} 
+     */
+    unzip : function(array){
+        let res = Array(array[0].length);
+        for(let i = 0; i < array[0].length;i++){
+            for(let j = 0; j < array.length;j++){
+                if(!res[i]){
+                    res[i] = []
+                }
+                res[i].push(array[j][i])
+            }
+        }
+        return res
+    },
+
+    /**
+     * 
+     * @param  {Array} array 
+     * @returns {Array}
+     */
+    xor : function(...array){
+        let temp = [];
+        let res = [];
+        for(let i = 0; i < arguments.length; i++){
+            for(let j = 0; j < arguments[i].length;j++){
+                temp.push(arguments[i][j])
+            }
+        }
+        for(let k = 0; k < temp.length;k++){
+            if(temp.indexOf(temp[k]) == temp.lastIndexOf(temp[k])){
+                res.push(temp[k])
+            }
+        }
+        return res
+    },
 }
