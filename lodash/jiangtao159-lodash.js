@@ -451,7 +451,7 @@ var jiangtao159 = {
      */
     take : function(array, n = 1){
         let res = array.slice()
-        res.length = array.length > n ? array.length : n;
+        res.length = n > array.length ? array.length : n;
         return res
     },
 
@@ -629,4 +629,134 @@ var jiangtao159 = {
         }
         return res
     },
+    
+    /**
+     * 
+     * @param {Array/string/object} collection 
+     * @param {value} value 
+     * @param {Number} fromIndex 
+     */
+    includes : function(collection,value,fromIndex = 0){
+        if(typeof(collection) == "string"){
+            if(fromIndex >= 0){
+                for(let i = fromIndex;i < collection.length;i++){
+                    if(collection.slice(i,i + value.length) == value){
+                        return true
+                    }
+                }
+            }else{
+                for(let i = collection.length + fromIndex;i < collection.length;i++){
+                    if(collection.slice(i,i + value.length) == value){
+                        return true
+                    }
+                }
+            }
+            return false
+        }else if(Array.isArray(collection)){
+          if(fromIndex >= 0){
+                for(let i = fromIndex;i < collection.length;i++){
+                    if(collection[i] == value){
+                        return true
+                    }
+                }
+            }else{
+                for(let i = collection.length + fromIndex;i < collection.length;i++){
+                    if(collection[i] == value){
+                        return true
+                    }
+                }
+            }
+            return false
+        }else{
+            for(var i in collection){
+                if(collection[i] == value){
+                    return true
+                }
+            }
+            return false
+        }
+    },
+
+    /**
+     * 
+     * @param {Array/Object} collection
+     * @returns {value} 
+     */
+    sample : function(collection){
+        if(Array.isArray(collection)){
+            return collection[Math.floor(Math.random() * collection.length)]
+        }else{
+            let len = Math.floor(Math.random() * Object.keys(collection).length);
+            let count = 0;
+            for(let i in collection){
+                if(count == len){
+                    return collection[i]
+                }
+                count++
+            }
+        }
+    },
+
+    /**
+     * 
+     * @param {Array/Object} collection 
+     * @param {Number} n
+     * @returns {value} 
+     */
+    sampleSize : function(collection,n = 1){
+        for(let j = 0; j < n;j++){
+            if(Array.isArray(collection)){
+                return collection[Math.floor(Math.random() * collection.length)]
+            }else{
+                let len = Math.floor(Math.random() * Object.keys(collection).length);
+                let count = 0;
+                for(let i in collection){
+                    if(count == len){
+                        return collection[i]
+                    }
+                    count++
+                }
+            }
+        }
+    },
+
+    /**
+     * 
+     * @param {Array/Object} collection
+     * @returns {Array} 
+     */
+    shuffle : function(collection){
+        if(!Array.isArray(collection)){
+            return collection
+        }
+        if(collection.length <= 1){
+            return collection
+        }
+        let len = collection.length
+        let array = new Array(len).fill(false);
+        let res = [];
+        let count = 0;
+        while(count < len){
+            let n = Math.floor(Math.random() * n);
+            if(!array[n]){
+                res.push(collection[n])
+                array[n] = true;
+                count++
+            }
+        }
+        return res
+    },
+
+    /**
+     * 
+     * @param {Array/string/object} collection
+     * @returns {Number} 
+     */
+    size : function(collection){
+        if(collection.length || collection.length == 0){
+            return collection.length
+        }else{
+            return Object.keys(collection).length
+        }
+    }
 }
