@@ -758,5 +758,105 @@ var jiangtao159 = {
         }else{
             return Object.keys(collection).length
         }
-    }
+    },
+
+    /**
+     * 
+     * @param {*} value 
+     * @param {*} other 
+     * @returns {boolean}
+     */
+    eq : function(value, other){
+        if(isNaN(value) && isNaN(other)){
+            return true
+        }
+        if(value === other){
+            return true
+        }else{
+            return false
+        }
+    },
+
+    /**
+     * 
+     * @param {*} value 
+     * @param {*} other
+     * @returns {boolean} 
+     */
+    gt : function(value,other){
+        if(value > other){
+            return true
+        }else{
+            return false
+        }
+    },
+
+    /**
+     * 
+     * @param {*} value 
+     * @param {*} other
+     * @returns {boolean} 
+     */
+    gte : function(value,other){
+        if(value >= other){
+            return true
+        }else{
+            return false
+        }
+    },
+
+    /**
+     * 
+     * @param {*} value
+     * @returns {Boolean} 
+     */
+    isArguments : function(value){
+        if(typeof(value) == "object" && !Array.isArray(value)){
+            return true
+        }else{
+            return false
+        } 
+    },
+
+    /**
+     * 
+     * @param {*} value
+     * @returns {Boolean} 
+     */
+    isArray : function(value){
+        if(Array.isArray(value)){
+            return true
+        }else{
+            return false
+        }
+    },
+
+    /**
+     * 
+     * @param {*} value
+     * @returns {Boolean} 
+     */
+    isBoolean : function(value){
+        if(typeof(value) == "boolean"){
+            return true
+        }else{
+            return false
+        }
+    },
+
+    /**
+     * 
+     * @param {*} value
+     * @returns {boolean} 
+     */
+    isNaN : function(value){
+        if(typeof(value) == "object"){
+            return value.toString() == "NaN"
+        }
+        if(value !== value){
+            return true
+        }else{
+            return false
+        }
+    },
 }
