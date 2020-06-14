@@ -811,7 +811,7 @@ var jiangtao159 = {
      * @returns {Boolean} 
      */
     isArguments : function(value){
-        if(typeof(value) == "object" && !Array.isArray(value)){
+        if(typeof(value) == "object" && !Array.isArray(value) && value.length){
             return true
         }else{
             return false
@@ -837,7 +837,7 @@ var jiangtao159 = {
      * @returns {Boolean} 
      */
     isBoolean : function(value){
-        if(typeof(value) == "boolean"){
+        if(value.constructor == Boolean){
             return true
         }else{
             return false
@@ -850,11 +850,12 @@ var jiangtao159 = {
      * @returns {boolean} 
      */
     isNaN : function(value){
-        if(typeof(value) == "object"){
-            return value.toString() == "NaN"
-        }
-        if(value !== value){
-            return true
+        if(value.constructor == Number){
+            if(value !== value){
+                return true
+            }else{
+                return false
+            }
         }else{
             return false
         }
@@ -867,7 +868,7 @@ var jiangtao159 = {
      */
     isNull : function(value){
         if(typeof(value) == "object" && !null){
-            return ture
+            return true
         }else{
             return false
         }
@@ -889,9 +890,13 @@ var jiangtao159 = {
      * @param {Number} precision 
      */
     ceil : function(number,precision = 0){
-        let temp = number / (10 ** precision);
+        let temp = number * (10 ** precision);
         temp = Math.ceil(temp);
-        temp *= (10 ** precision)
+        temp /= (10 ** precision)
         return temp
+    },
+
+    flattenDeep : function(){
+
     }
 }
