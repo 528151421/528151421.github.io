@@ -859,4 +859,39 @@ var jiangtao159 = {
             return false
         }
     },
+
+    /**
+     * 
+     * @param {*} value 
+     * @returns {boolean}
+     */
+    isNull : function(value){
+        if(typeof(value) == "object" && !null){
+            return ture
+        }else{
+            return false
+        }
+    },
+
+    /**
+     * 
+     * @param {Number} augend 
+     * @param {Number} addend 
+     * @returns {Number}
+     */
+    add : function(augend,addend){
+        return augend + addend
+    },
+
+    /**
+     * 
+     * @param {Number} number 
+     * @param {Number} precision 
+     */
+    ceil : function(number,precision = 0){
+        let temp = number / (10 ** precision);
+        temp = Math.ceil(temp);
+        temp *= (10 ** precision)
+        return temp
+    }
 }
