@@ -941,6 +941,14 @@ var jiangtao159 = {
         return map;
     },
 
+    /**
+     * 
+     * @param {Array/Object} collection 
+     * @param {Function} predicate 
+     * @param {Number} fromIndex
+     * @returns {*} 
+     * 返回从下标位置开始第一个是true的元素，没有就返回undefined
+     */
     find : function(collection, predicate=_.identity, fromIndex = 0){
         if(Array.isArray(collection)){
             for(let i = fromIndex; i < collection.length;i++){
@@ -952,14 +960,75 @@ var jiangtao159 = {
             let count = 0;
             for(let proto in collection){
                 if(collection(collection[proto],proto,collection)){
-                    if(count == fromIndex){
+                    if(count >= fromIndex){
                         return collection[proto];
                         count++;
                     }
-                    return 
+                }
+            }
+        }
+        return undefined
+    },
+    
+    /**
+     * 
+     * @param {Array/Object} collection 
+     * @param {Array} iteratee
+     * 返回经过函数处理过的扁平化数组 
+     */
+    flatMap : function (collection, iteratee=_.identity) {
+        let res = [];
+        for(let i in collection){
+            res.concat(iteratee(collection[i],i,collection));
+        }
+        return res;
+    },
+
+    flatMapDeep : function (collection, iteratee=_.identity) {
+        let res = [];
+        for(let i in collection){
+            let temp = iteratee(collection[i],i,collection);
+            function openArray(array) {
+                for(let j = 0; j < array.length;j++){
+                    if(Array.isArray(array[j])){
+                        openArray
+                    }else{
+                        res.push(array[j])
+                    }
+                }
+            }
+            openArray(temp);
+        }
+        return res;
+    },
+    
+    /**
+     * 
+     * @param {Array/Object} collection 
+     * @param {Function} predicate
+     * @returns {Boolean}
+     * 用函数判断集合里所有元素，如果有false返回false，否则返回true 
+     */
+    every : function(collection, predicate=_.identity){
+        for(let i in collection){
+            if(!predicate(collection[i],i,collection)){
+                return false
+            }
+            return true
+        }
+    },
+
+
+
+    convert : function(value){
+        if(Array.isArray(value)){
+            return function (val) {
+                for(let i = 0;i < value.length;i+2){
+                    if(value[i] == val){
+                        return true
+                    }
                 }
             }
         }
     }
-    
 }
