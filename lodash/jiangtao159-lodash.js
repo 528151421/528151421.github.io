@@ -767,7 +767,7 @@ var jiangtao159 = {
      * @returns {boolean}
      */
     eq : function(value, other){
-        if(isNaN(value) && isNaN(other)){
+        if((value !== value) && (other !== other)){
             return true
         }
         if(value === other){
@@ -896,7 +896,70 @@ var jiangtao159 = {
         return temp
     },
 
-    flattenDeep : function(){
+    /**
+     * 
+     * @param {Array} array
+     * @returns {Array} 
+     */
+    flattenDeep : function(array){
+        let res = [];
+        function deep(array){
+            for(let i = 0; i < array.length;i++){
+                if(Array.isArray(array[i])){
+                    deep(array[i])
+                }else{
+                    res.push(array[i])
+                }
+            }
+        }
+        deep(array);
+        return res;
+    },
 
+    flattenDepth : function(array,depth = 1){
+        let res = [];
+        let count = 0
+        function deep(array){
+            for(let i = 0; i < array.length;i++){
+                if(Array.isArray(array[i]) && count < depth){
+                    deep(array[i]);
+                    count++
+                }else{
+                    res.push(array[i])
+                }
+            }
+        }
+        deep(array);
+        return res;
+    },
+
+    fromPairs : function(array){
+        let map = {};
+        for(let i = 0; i < array.length;i++){
+            map[array[i][0]] = array[i][1];
+        }
+        return map;
+    },
+
+    find : function(collection, predicate=_.identity, fromIndex = 0){
+        if(Array.isArray(collection)){
+            for(let i = fromIndex; i < collection.length;i++){
+                if(predicate(collection[i],i,collection)){
+                    return collection[i]
+                }
+            }
+        }else{
+            let count = 0;
+            for(let proto in collection){
+                if(collection(collection[proto],proto,collection)){
+                    if(count == fromIndex){
+                        return collection[proto];
+                        count++;
+                    }
+                    return 
+                }
+            }
+        }
     }
+    
 }
