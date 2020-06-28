@@ -4,8 +4,8 @@ var jiangtao159 = {
             return iteratee
         }
         if(Object.prototype.toString.call(iteratee) === "[object String]"){
-            return  function(iteratee) {
-                return this[iteratee]
+            return  function(obj) {
+                return obj[iteratee]
             }
         }
         if(Object.prototype.toString.call(iteratee) === "[object Object]"){
@@ -120,12 +120,12 @@ var jiangtao159 = {
             ary.forEach(element => {
                 res.push(element.map(it => this.changeToFunction(f)(it)))
             })
-            res = this.difference(res)
+            res = this.difference(...res)
             let i = 0, 
                 j = 0;
             while(i < ary.length && j < res.length){
-                if(this.changeToFunction(f)(ary[i]) == res[j]){
-                    ans.push(ary[i]);
+                if(this.changeToFunction(f)(ary[0][i]) !== res[j]){
+                    ans.push(ary[0][i]);
                     i++;
                     j++;
                 }else{
@@ -139,10 +139,18 @@ var jiangtao159 = {
     differenceWith : function(array,...values){
         let ary = Array.from(arguments);
         let c = ary.pop();
+        let value = ary.slice(1)
         let res = [];
         ary[0].forEach(element => {
-            c(element,)
+            vlue.forEach(it => {
+                it.forEach(t => {
+                    if(!c(element,t)){
+                        res.push(element)
+                    }
+                });
+            });
         });
+        return res;
     },
     /**
      * 
