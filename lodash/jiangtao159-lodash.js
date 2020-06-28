@@ -1,5 +1,15 @@
 var jiangtao159 = {
     changeToFunction : function(iteratee){
+        if(Object.prototype.toString.call(iteratee) === "[object Array]"){
+            return function (value) {
+                for(let i = 0; i < iteratee.length;i+=2){
+                    if(value[iteratee] !== iteratee[i+1]){
+                        return false
+                    }
+                }
+                return true;
+            }
+        }
         if(Object.prototype.toString.call(iteratee) === "[object Function]"){
             return iteratee
         }
@@ -10,8 +20,13 @@ var jiangtao159 = {
         }
         if(Object.prototype.toString.call(iteratee) === "[object Object]"){
             return function (obj) {
-                let t = Object.keys(iteratee)[0];
-                return obj[t] == iteratee[t];
+                let key = Object.keys(iteratee);
+                for(let i = 0 ; i < key.length;i++){
+                    if(iteratee[key[i]] !== obj[key[i]]){
+                        return false
+                    }
+                }
+                return true;
             }
         }
     },
@@ -136,6 +151,12 @@ var jiangtao159 = {
         }
     },
     
+    /**
+     * 
+     * @param {Array} array 需要检查的元素 
+     * @param  {...any} values  需要排查的值
+     * @param [comparator] (Function) comparator 调用每个元素。
+     */
     differenceWith : function(array,...values){
         let ary = Array.from(arguments);
         let c = ary.pop();
@@ -185,6 +206,31 @@ var jiangtao159 = {
         return res
     },
 
+    /**
+     * 创建一个切片数组，去除array中从结尾开始到 predicate 返回假值结束部分
+     * @param {*} array 要查询的数组。
+     * @param {*} predicate  迭代调用的方法
+     */
+    dropRightWhile : function (array,predicate) {
+        let res = array.slice();
+        let f = this.changeToFunction(predicate)
+        if(Object.prototype.toString.call(predicate) == "[Object Function]"){
+            while (res.length) {
+                if(!predicate(res[res.length - 1],res.length - 1,res)){
+                    return res;
+                }else{
+                    res.pop();
+                }
+            }
+        }
+        while (res.length){
+            if(f(res[res.length - 1]) == false){
+                return res;
+            }else{
+                res.pop();
+            }
+        }
+    },
     /**
      * 
      * @param {Array} array 
