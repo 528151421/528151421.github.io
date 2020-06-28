@@ -123,7 +123,7 @@ var jiangtao159 = {
             res = this.difference(...res)
             let i = 0, 
                 j = 0;
-            while(i < ary.length && j < res.length){
+            while(i < ary[0].length && j < res.length){
                 if(this.changeToFunction(f)(ary[0][i]) == res[j]){
                     ans.push(ary[0][i]);
                     i++;
