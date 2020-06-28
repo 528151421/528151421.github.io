@@ -124,7 +124,7 @@ var jiangtao159 = {
             let i = 0, 
                 j = 0;
             while(i < ary.length && j < res.length){
-                if(this.changeToFunction(f)(ary[0][i]) !== res[j]){
+                if(this.changeToFunction(f)(ary[0][i]) == res[j]){
                     ans.push(ary[0][i]);
                     i++;
                     j++;
@@ -142,7 +142,7 @@ var jiangtao159 = {
         let value = ary.slice(1)
         let res = [];
         ary[0].forEach(element => {
-            vlue.forEach(it => {
+            value.forEach(it => {
                 it.forEach(t => {
                     if(!c(element,t)){
                         res.push(element)
