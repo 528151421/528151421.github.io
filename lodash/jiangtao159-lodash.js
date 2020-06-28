@@ -1,4 +1,20 @@
 var jiangtao159 = {
+    changeToFunction : function(iteratee){
+        if(Object.prototype.toString.call(iteratee) === "[object Function]"){
+            return iteratee
+        }
+        if(Object.prototype.toString.call(iteratee) === "[object String]"){
+            return  function(iteratee) {
+                return this[iteratee]
+            }
+        }
+        if(Object.prototype.toString.call(iteratee) === "[object Object]"){
+            return function (obj) {
+                let t = Object.keys(iteratee)[0];
+                return obj[t] == iteratee[t];
+            }
+        }
+    },
     /**
      * 
      * @param {Array} ary 
@@ -84,6 +100,50 @@ var jiangtao159 = {
         return res
     },
 
+    /**
+     * 
+     * @param {Array} array 需要检查的数组
+     * @param  {...any} values  需要排除的值。 
+     * @iteratee 迭代调用的方法
+     * @returns {Array}
+     */
+    differenceBy : function(array, ...values){
+        let temp = arguments[arguments.length - 1];
+        let theType = Object.prototype.toString.call(temp);
+        if(theType === "[object Array]"){
+            return this.difference(...arguments)
+        }else{
+            let ary = Array.from(arguments);
+            let f = ary.pop();
+            let res = [];
+            let ans = []
+            ary.forEach(element => {
+                res.push(element.map(it => this.changeToFunction(f)(it)))
+            })
+            res = this.difference(res)
+            let i = 0, 
+                j = 0;
+            while(i < ary.length && j < res.length){
+                if(this.changeToFunction(f)(ary[i]) == res[j]){
+                    ans.push(ary[i]);
+                    i++;
+                    j++;
+                }else{
+                    i++;
+                }
+            }
+            return ans;
+        }
+    },
+    
+    differenceWith : function(array,...values){
+        let ary = Array.from(arguments);
+        let c = ary.pop();
+        let res = [];
+        ary[0].forEach(element => {
+            c(element,)
+        });
+    },
     /**
      * 
      * @param {Array} ary 
@@ -1017,18 +1077,6 @@ var jiangtao159 = {
             return true
         }
     },
-
-
-
-    convert : function(value){
-        if(Array.isArray(value)){
-            return function (val) {
-                for(let i = 0;i < value.length;i+2){
-                    if(value[i] == val){
-                        return true
-                    }
-                }
-            }
-        }
-    }
+        
+    
 }
