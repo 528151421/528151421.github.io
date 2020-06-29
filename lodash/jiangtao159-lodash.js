@@ -390,6 +390,63 @@ var jiangtao159 = {
     },
 
     /**
+     * 数组交集
+     * 它接受一个iteratee调用每一个arrays的每个值以产生一个值，通过产生的值进行了比较。结果值是从第一数组中选择。iteratee 会传入一个参数：(value)。
+     * @param {Array} arrays 要检查的数组
+     * @param  {...any} value 数组及iteratee（迭代器）调用每个元素。
+     */
+    intersectionBy : function(arrays,...value){
+        let last = arguments[arguments.length - 1];
+        if(Array.isArray(last)){
+            return this.intersection(...arguments)
+        }else{
+            let f = this.changeToFunction(last);
+            let ary = Array.from(arguments)
+            ary.pop();
+            let res = [];
+            let ans = [];
+            ary.forEach(it => res.push(it.map(element => f(element))))
+            res = this.intersection(...res);
+            let i = 0,
+                j = 0;
+            while(i < res.length && j < ary.length){
+                if(res[i] === res[j]){
+                    ans.push(ary[j]);
+                    i++;
+                    j++;
+                }else{
+                    j++;
+                }
+            }
+        }
+        return ans;
+    },
+
+    /**
+     * 这个方法类似_.intersection，区别是它接受一个comparator调用比较arrays中的元素。结果值是从第一数组中选择。comparator 会传入两个参数：(arrVal, othVal)。
+     * @param {Array} array  需要检查的数组
+     * @param  {...any} value  对比的数组及comparator比较函数；
+     * @returns {Array}
+     */
+    intersectionWith : function(array,...value){
+        let res = [];
+        let ary = Array(arguments).slice(1);
+        let f = ary.pop();
+        array.forEach(element => {
+            let count = 0;
+            for(let i = 0 ;i < ary.length;i++){
+                if(f(ary[i]) == f(element)){
+                    count++;
+                    continue;
+                }
+            }
+            if(count == ary.length){
+                res.push(element)
+            }
+        });
+        return res;
+    },
+    /**
      * @param {Array} array
      * @param {value} separator
      * @returns {string}
@@ -1084,20 +1141,21 @@ var jiangtao159 = {
     },
 
     flattenDepth : function(array,depth = 1){
-        let res = [];
-        let count = 0
-        function deep(array,count){
-            for(let i = 0; i < array.length;i++){
-                if(Array.isArray(array[i]) && count < depth){
-                    deep(array[i],count);
-                    count++
+        let res = []
+        for(let d = 0; d < depth;d++){
+            for(let i = 0 ; i < array.length;i++){
+                if(Array.isArray(array[i])){
+                    for(let j = 0; j < array[i].length;j++){
+                        res.push(array[i][j])
+                    }
                 }else{
                     res.push(array[i])
                 }
             }
+            array = res;
+            res = [];
         }
-        deep(array);
-        return res;
+        return array;
     },
 
     fromPairs : function(array){
