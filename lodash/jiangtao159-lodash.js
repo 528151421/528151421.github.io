@@ -455,7 +455,6 @@ var jiangtao159 = {
         res += array[array.length - 1]
         return res
     },
-
     /**
      * @param {Array} array
      * @returns {value}
