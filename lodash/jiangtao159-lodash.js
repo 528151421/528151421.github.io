@@ -432,8 +432,9 @@ var jiangtao159 = {
             let count = 0;
             ary.forEach(that => {
                 that.forEach(it => {
-                    f(it) == f(element)
-                    count++;
+                    if(f(it) == f(element)){
+                        count++;
+                    }
                 });
                 if(count == that.length){
                     res.push(element)
@@ -538,7 +539,7 @@ var jiangtao159 = {
      * （删除数组中的元素）
      * @param {Array} array  要检查的数组
      * @param {Array} values  要移除值的数组。
-     * @param {Function/Object/Array} iteratee （迭代器）调用每个元素
+     * @param {Function/Object/Array/string} iteratee （迭代器）调用每个元素
      */
     pullAllBy : function(array,values,iteratee){
         let map = {};
@@ -551,6 +552,23 @@ var jiangtao159 = {
         })
     },
 
+    /**
+     * 
+     * 删除数组中的元素
+     * @param {Array} array 
+     * @param {Array} values 
+     * @param {Function/Object/Array/string} comparator 
+     */
+    pullAllWith : function (array, values, comparator) {
+        let f = this.changeToFunction(comparator);
+        let map = {};
+        values.forEach(element => {
+            map[f(element)] = element;
+        });
+        return array.filter(value =>{
+            return !(f(value) in map)
+        })
+    },
     
     /**
      * 
@@ -613,6 +631,19 @@ var jiangtao159 = {
     },
 
     /**
+     * 获取索引值
+     * @param {Array} array 要检查的排序数组。
+     * @param {*} value 要评估的值。
+     * @param {*} iteratee  迭代函数，调用每个元素。
+     */
+    sortedIndexOf : function(array, value,iteratee){
+        let f = this.changeToFunction(iteratee);
+        array.map(it => f(it));
+        value = f(value);
+        return this.sortedIndex(array,value)
+    },
+
+    /**
      * 
      * @param {Array} array 
      * @param {Number} value
@@ -667,6 +698,59 @@ var jiangtao159 = {
         }
     },
 
+    /**
+     * 获取索引值 
+     * @param {Array} array  要检查的排序数组。
+     * @param {*} value   要评估的值。
+     * @param {*} iteratee   迭代函数，调用每个元素。
+     */
+    sortedLastIndexBy : function(array, value, iteratee){
+        let f = this.changeToFunction(iteratee);
+        array.map(it => f(it));
+        value = f(value);
+        return this.sortedIndex(array,value)
+    },
+
+    /**
+     * 
+     * @param {Array} array  有重复值的排序数组
+     * @returns {Array}  返回一个新的不重复的数组。
+     */
+    sortedUniq : function(array){
+        if(array.length == 0){
+            return []
+        }
+        let res = [array[0]];
+        let i = 1;
+        while(i < array.length){
+            if(array[i] !== res[res.length - 1]){
+                res.push(array[i])
+            }
+            i++;
+        }
+        return res;
+    },
+    
+    /**
+     * 返回迭代后的排序数组去重的结果
+     * @param {Array} array 
+     * @param {*} iteratee 
+     */
+    sortedUniqBy : function(array,iteratee){
+        if(array.length == 0){
+            return []
+        }
+        let f = this.changeToFunction(iteratee);
+        let res = [array[0]];
+        let i = 1;
+        while(i < array.length){
+            if(f(array[i]) !== f(res[res.length - 1])){
+                res.push(array[i])
+            }
+            i++;
+        }
+        return res;
+    },
     /**
      * 
      * @param {Array} array
