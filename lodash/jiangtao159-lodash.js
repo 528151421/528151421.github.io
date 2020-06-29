@@ -3,7 +3,7 @@ var jiangtao159 = {
         if(Object.prototype.toString.call(iteratee) === "[object Array]"){
             return function (value) {
                 for(let i = 0; i < iteratee.length;i+=2){
-                    if(value[iteratee] !== iteratee[i+1]){
+                    if(value[iteratee[i]] !== iteratee[i+1]){
                         return false
                     }
                 }
@@ -232,6 +232,31 @@ var jiangtao159 = {
         }
     },
     /**
+     * 创建一个切片数组，去除array中从头部开始到 predicate 返回假值结束部分
+     * @param {Array} array   需要切片的数组
+     * @param {*} predicate    调用的方法
+     */
+    dropWhile : function (array, predicate){
+        let res = array.slice();
+        let f = this.changeToFunction(predicate)
+        if(Object.prototype.toString.call(predicate) == "[Object Function]"){
+            while (res.length) {
+                if(!predicate(res[0],0,res)){
+                    return res;
+                }else{
+                    res.shift()
+                }
+            }
+        }
+        while (res.length){
+            if(f(res[0]) == false){
+                return res;
+            }else{
+                res.shift();
+            }
+        }
+    },
+    /**
      * 
      * @param {Array} array 
      * @param {*} value 
@@ -248,6 +273,34 @@ var jiangtao159 = {
         return array
     },
 
+    /**
+     * 查找从头部fromindex下标开始第一个predicate返回ture的下标
+     * @param {Array} array   要检查的数组
+     * @param {Function/Array/Object/String} predicate   需要调用的方法
+     * @param {Number} fromIndex    从某个下标开始
+     */
+    findIndex : function(array, predicate, fromIndex = 0){
+        let f = this.changeToFunction(predicate)
+        for(let i = fromIndex;i < array.length;i++){
+            if(f(array[i])){
+                return i
+            }
+        }
+    },
+    /**
+     * 查找从尾部开始fromindex下标第一个predicate返回ture的下标
+     * @param {Array} array  要检查的数组
+     * @param {Function/Array/Object/String} predicate    需要调用的方法
+     * @param {Number} fromIndex   从某个下标开始
+     */
+    findLastIndex : function(array, predicate, fromIndex = array.length-1){
+        let f = this.changeToFunction(predicate);
+        for(let i = fromIndex;i >= 0;i--){
+            if(f(array[i])){
+                return i;
+            }
+        }
+    },
     /** 
      * @param {Array} array
      * @returns{Array}
@@ -1033,10 +1086,10 @@ var jiangtao159 = {
     flattenDepth : function(array,depth = 1){
         let res = [];
         let count = 0
-        function deep(array){
+        function deep(array,count){
             for(let i = 0; i < array.length;i++){
                 if(Array.isArray(array[i]) && count < depth){
-                    deep(array[i]);
+                    deep(array[i],count);
                     count++
                 }else{
                     res.push(array[i])
