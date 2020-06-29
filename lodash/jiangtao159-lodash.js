@@ -410,7 +410,7 @@ var jiangtao159 = {
             let i = 0,
                 j = 0;
             while(i < res.length && j < ary.length){
-                if(res[i] === res[j]){
+                if(res[i] === ary[j]){
                     ans.push(ary[j]);
                     i++;
                     j++;
@@ -441,7 +441,8 @@ var jiangtao159 = {
                 }
             }
             if(count == ary.length){
-                res.push(element)
+                res.push(element);
+                count = 0;
             }
         });
         return res;
