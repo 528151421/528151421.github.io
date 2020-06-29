@@ -397,27 +397,23 @@ var jiangtao159 = {
      */
     intersectionBy : function(arrays,...value){
         let last = arguments[arguments.length - 1];
+        let ans = [];
         if(Array.isArray(last)){
             return this.intersection(...arguments)
         }else{
+            let map = {};
             let f = this.changeToFunction(last);
             let ary = Array.from(arguments)
             ary.pop();
             let res = [];
-            let ans = [];
             ary.forEach(it => res.push(it.map(element => f(element))))
             res = this.intersection(...res);
-            let i = 0,
-                j = 0;
-            while(i < res.length && j < ary.length){
-                if(res[i] === ary[j]){
-                    ans.push(ary[j]);
-                    i++;
-                    j++;
-                }else{
-                    j++;
-                }
-            }
+            res.forEach(element => {
+                map[element] = element
+            });
+            return arrays.filter(value => {
+                return f(value) in map
+            })
         }
         return ans;
     },
@@ -434,16 +430,15 @@ var jiangtao159 = {
         let f = ary.pop();
         array.forEach(element => {
             let count = 0;
-            for(let i = 0 ;i < ary.length;i++){
-                if(f(ary[i]) == f(element)){
+            ary.forEach(that => {
+                that.forEach(it => {
+                    f(it) == f(element)
                     count++;
-                    continue;
+                });
+                if(count == that.length){
+                    res.push(element)
                 }
-            }
-            if(count == ary.length){
-                res.push(element);
-                count = 0;
-            }
+            });
         });
         return res;
     },
@@ -540,6 +535,24 @@ var jiangtao159 = {
         return array
     },
 
+    /**
+     * （删除数组中的元素）
+     * @param {Array} array  要检查的数组
+     * @param {Array} values  要移除值的数组。
+     * @param {Function/Object/Array} iteratee （迭代器）调用每个元素
+     */
+    pullAllBy : function(array,values,iteratee){
+        let map = {};
+        let f = this.changeToFunction(iteratee)
+        values.forEach(element => {
+            map[f(element)] = element;
+        });
+        return array.filter(value =>{
+            return !(f(value) in map)
+        })
+    },
+
+    
     /**
      * 
      * @param {Array} array
@@ -1175,7 +1188,7 @@ var jiangtao159 = {
      * @returns {*} 
      * 返回从下标位置开始第一个是true的元素，没有就返回undefined
      */
-    find : function(collection, predicate=_.identity, fromIndex = 0){
+    find : function(collection, predicate, fromIndex = 0){
         if(Array.isArray(collection)){
             for(let i = fromIndex; i < collection.length;i++){
                 if(predicate(collection[i],i,collection)){
@@ -1202,7 +1215,7 @@ var jiangtao159 = {
      * @param {Array} iteratee
      * 返回经过函数处理过的扁平化数组 
      */
-    flatMap : function (collection, iteratee=_.identity) {
+    flatMap : function (collection, iteratee) {
         let res = [];
         for(let i in collection){
             res.concat(iteratee(collection[i],i,collection));
@@ -1210,7 +1223,7 @@ var jiangtao159 = {
         return res;
     },
 
-    flatMapDeep : function (collection, iteratee=_.identity) {
+    flatMapDeep : function (collection, iteratee) {
         let res = [];
         for(let i in collection){
             let temp = iteratee(collection[i],i,collection);
@@ -1235,7 +1248,7 @@ var jiangtao159 = {
      * @returns {Boolean}
      * 用函数判断集合里所有元素，如果有false返回false，否则返回true 
      */
-    every : function(collection, predicate=_.identity){
+    every : function(collection, predicate){
         for(let i in collection){
             if(!predicate(collection[i],i,collection)){
                 return false
@@ -1243,6 +1256,4 @@ var jiangtao159 = {
             return true
         }
     },
-        
-    
 }
