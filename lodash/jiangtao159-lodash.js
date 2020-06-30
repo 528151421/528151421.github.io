@@ -957,6 +957,33 @@ var jiangtao159 = {
         }
         return res;
     },
+
+    /**
+     * 数组去重 接受一个comparator调用比较arrays数组的每一个元素
+     * @param {Array} array  要检查的数组。
+     * @param {*} comparator  比较函数，调用每个元素。
+     * @returns {Array}   返回新的去重后的数组
+     */
+    uniqWith : function(array, comparator){
+        if(array.length == 0){
+            return []
+        }
+        let res = [array[0]];
+        for(let i = 1;i < array.length;i++){
+            let bool = true;
+            for(let i = j - 1;j >= 0; j--){
+                if(comparator(array[i],array[j])){
+                    bool = false
+                }
+            }
+            if(bool){
+                res.push(array[i])
+            }
+        }
+        return res;
+    },
+
+    
     /**
      * 
      * @param {Array} array 
@@ -1059,6 +1086,24 @@ var jiangtao159 = {
         return res
     },
 
+    /**
+     * 数组重组
+     * @param {Array} array  要处理的分组元素数组。
+     * @param {*} iteratee  这个函数用来组合重组的值。 
+     * @returns {Array} 返回重组元素的新数组。
+     */
+    unzipWith : function (array, iteratee) {
+        let res = [];
+        for(let i = 0;i < array[0].length;i++){
+            let temp = [];
+            for(let j = 0; j < array.length;i++){
+                temp.push(array[j][i])
+            }
+            res.push(iteratee(...temp))
+        }
+        return res;
+    },
+    
     /**
      * 
      * @param  {Array} array 
