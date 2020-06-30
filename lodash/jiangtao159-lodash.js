@@ -903,17 +903,21 @@ var jiangtao159 = {
     unionWith : function (...arrays) {
         let ary = Array.from(arguments);
         let res = {}
-        let map = {}
         let f = ary.pop();
         ary = this.flattenDeep(ary);
         for(let i = 0; i < ary.length;i++){
-            for(let j = i + 1;j < ary.length;j++){
-                if(f(ary[i],ary[j]) && !(ary[j] in map)){
-                    map[ary[j]] = ary[j];
-                    res.push(ary[j])
-                }else if(!(ary[i] in map)){
-                    res.push(ary[j])
+            if(i == 0){
+                res.push(array[i]);
+                continue;
+            }
+            let bool = true;
+            for(let j = i - 1; j >= 0;j--){
+                if(f(arry[i],arry[j])){
+                    bool = false
                 }
+            }
+            if(bool){
+                res.push(array[i])
             }
         }
         return res;
