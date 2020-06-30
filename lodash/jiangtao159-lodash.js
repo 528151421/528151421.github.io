@@ -796,11 +796,64 @@ var jiangtao159 = {
         return res
     },
 
+    /**
+     * 从右边开始数组截取 直到返回false
+     * @param {Array} array  要检索的数组。
+     * @param {*} predicate   每次迭代调用的函数。
+     * @returns {Array} 
+     */
     takeRightWhile : function(array, predicate){
         let f = this.changeToFunction(predicate)
         let res = [];
-       
+       if(Object.prototype.toString.call(predicate) == "[Object Function]"){
+           for(let i = array.length - 1; i >= 0;i--){
+               if(predicate(array[i],i,array)){
+                   res.unshift(array[i])
+               }else{
+                   break;
+               }
+           }
+       }else{
+           for(let i = array.length - 1;i >= 0;i--){
+               if(f(array[i])){
+                   res.unshift(array[i])
+               }else{
+                   break;
+               }
+           }
+       }
+       return res;
     },
+
+    /**
+     * 从左边开始数组截取，直到返回false
+     * @param {Array} array  要检索的数组。
+     * @param {*} predicate  每次迭代调用的函数。
+     * @returns {Array}
+     */
+    takeWhile : function(array,predicate){
+        let f = this.changeToFunction(predicate)
+        let res = [];
+       if(Object.prototype.toString.call(predicate) == "[Object Function]"){
+           for(let i = 0; i < array.length;i++){
+               if(predicate(array[i],i,array)){
+                   res.push(array[i])
+               }else{
+                   break;
+               }
+           }
+       }else{
+           for(let i = 0; i < array.length;i++){
+               if(f(array[i])){
+                   res.push(array[i])
+               }else{
+                   break;
+               }
+           }
+       }
+       return res;
+    },
+
     /**
      * 
      * @param  {Array} array
@@ -821,6 +874,50 @@ var jiangtao159 = {
         return res
     },
 
+    /**
+     * 数组去重
+     * @param  {...any} arrays   需要去重的数组 和迭代的函数
+     * @returns {Array}  返回新的去重后的数组。
+     */
+    unionBy : function (...arrays) {
+        let ary = Array.from(arguments)
+        let f = this.changeToFunction(ary.pop())
+        let res = [];
+        let map = {};
+        ary.forEach(element => {
+            element.forEach(it => {
+                if(!(f(it) in map)){
+                    res.push(it)
+                    map[f(it)] = it;
+                }
+            });            
+        });
+        return res;
+    },
+
+    /**
+     * 数组去重
+     * @param  {...any} arrays 
+     * @returns {Array} 接受一个comparator调用比较arrays数组的每一个元素
+     */
+    uniqWith : function (...arrays) {
+        let ary = Array.from(arguments);
+        let res = {}
+        let map = {}
+        let f = ary.pop();
+        ary = this.flattenDeep(ary);
+        for(let i = 0; i < ary.length;i++){
+            for(let j = i + 1;j < ary.length;j++){
+                if(f(ary[i],ary[j]) && !(ary[j] in map)){
+                    map[ary[j]] = ary[j];
+                    res.push(ary[j])
+                }else if(!(ary[i] in map)){
+                    res.push(ary[j])
+                }
+            }
+        }
+        return res;
+    },
     /**
      * 
      * @param {Array} array
