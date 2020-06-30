@@ -900,7 +900,7 @@ var jiangtao159 = {
      * @param  {...any} arrays 
      * @returns {Array} 接受一个comparator调用比较arrays数组的每一个元素
      */
-    uniqWith : function (...arrays) {
+    unionWith : function (...arrays) {
         let ary = Array.from(arguments);
         let res = {}
         let map = {}
@@ -935,6 +935,24 @@ var jiangtao159 = {
         return res
     },
 
+    /**
+     * 数组去重
+     * @param {Array} array  要检查的数组。
+     * @param {*} iteratee  迭代函数，调用每个元素。 
+     * @return {array}    返回新的去重后的数组。
+     */
+    uniqBy : function(array, iteratee) {
+        let map = {};
+        let res = [];
+        let f = this.changeToFunction(iteratee);
+        for(let i = 0; i < array.length;i++){
+            if(!(f(array[i]) in map)){
+                res.push(array[i]);
+                map[array[i]] = array[i]
+            }
+        }
+        return res;
+    },
     /**
      * 
      * @param {Array} array 
