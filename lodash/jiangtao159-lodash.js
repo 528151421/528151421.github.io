@@ -643,7 +643,7 @@ var jiangtao159 = {
      */
     sortedIndexBy : function(array, value,iteratee){
         let f = this.changeToFunction(iteratee);
-        array.map(it => f(it));
+        array = array.map(it => f(it));
         value = f(value);
         return this.sortedIndex(array,value)
     },
@@ -907,17 +907,17 @@ var jiangtao159 = {
         ary = this.flattenDeep(ary);
         for(let i = 0; i < ary.length;i++){
             if(i == 0){
-                res.push(array[i]);
+                res.push(ary[i]);
                 continue;
             }
             let bool = true;
             for(let j = i - 1; j >= 0;j--){
-                if(f(arry[i],arry[j])){
+                if(f(ary[i],ary[j])){
                     bool = false
                 }
             }
             if(bool){
-                res.push(array[i])
+                res.push(ary[i])
             }
         }
         return res;
@@ -952,7 +952,7 @@ var jiangtao159 = {
         for(let i = 0; i < array.length;i++){
             if(!(f(array[i]) in map)){
                 res.push(array[i]);
-                map[array[i]] = array[i]
+                map[f(array[i])] = array[i]
             }
         }
         return res;
@@ -1103,7 +1103,7 @@ var jiangtao159 = {
         }
         return res;
     },
-    
+
     /**
      * 
      * @param  {Array} array 
@@ -1123,6 +1123,32 @@ var jiangtao159 = {
             }
         }
         return res
+    },
+
+    /**
+     * 数组取差集
+     * @param  {...any} values 
+     * @returns {Array} 返回过滤值后的新数组。
+     */
+    xorBy : function (...values) {
+        let ary = Array.from(arguments);
+        f = this.changeToFunction(ary.pop());
+        ary = this.flattenDeep(ary)
+        let map = {};
+        let res = [];
+        ary.forEach( it => {
+            if(!(f(it) in map)){
+                map[f(it)] = 1;
+            }else{
+                map[f(it)]++;
+            }
+        })
+        ary.forEach(element => {
+            if(map[f(it)] == 1){
+                res.push(it)
+            }
+        });
+        return res;
     },
     
     /**
