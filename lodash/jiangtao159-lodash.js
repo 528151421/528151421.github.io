@@ -432,11 +432,15 @@ var jiangtao159 = {
             let count = 0;
             ary.forEach(that => {
                 that.forEach(it => {
-                    if(f(it) == f(element)){
-                        count++;
-                    }
+                    it.forEach(item => {
+                        {
+                            if(f(item) == f(element)){
+                                count++;
+                            }
+                        }
+                    })
                 });
-                if(count == that.length){
+                if(count == it.length){
                     res.push(element)
                 }
             });
@@ -560,14 +564,15 @@ var jiangtao159 = {
      * @param {Function/Object/Array/string} comparator 
      */
     pullAllWith : function (array, values, comparator) {
-        let f = this.changeToFunction(comparator);
-        let map = {};
-        values.forEach(element => {
-            map[f(element)] = element;
-        });
-        return array.filter(value =>{
-            return !(f(value) in map)
+        let res = [];
+        array.forEach(element =>{
+            values.forEach(it =>{
+                if(comparator(element,it)){
+                    res.push(element)
+                }
+            })
         })
+        return res;
     },
     
     /**
@@ -636,7 +641,7 @@ var jiangtao159 = {
      * @param {*} value 要评估的值。
      * @param {*} iteratee  迭代函数，调用每个元素。
      */
-    sortedIndexOf : function(array, value,iteratee){
+    sortedIndexBy : function(array, value,iteratee){
         let f = this.changeToFunction(iteratee);
         array.map(it => f(it));
         value = f(value);
@@ -706,9 +711,9 @@ var jiangtao159 = {
      */
     sortedLastIndexBy : function(array, value, iteratee){
         let f = this.changeToFunction(iteratee);
-        array.map(it => f(it));
+        array = array.map(it => f(it));
         value = f(value);
-        return this.sortedIndex(array,value)
+        return this.sortedLastIndex(array,value)
     },
 
     /**
@@ -791,6 +796,13 @@ var jiangtao159 = {
         return res
     },
 
+    takeRightWhile : function(array, predicate){
+        let f = this.changeToFunction(predicate)
+        let res = [];
+        for(let i = array.length - 1;i >= 0;i--){
+            if()
+        }
+    },
     /**
      * 
      * @param  {Array} array
