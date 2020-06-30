@@ -799,9 +799,7 @@ var jiangtao159 = {
     takeRightWhile : function(array, predicate){
         let f = this.changeToFunction(predicate)
         let res = [];
-        for(let i = array.length - 1;i >= 0;i--){
-            if()
-        }
+       
     },
     /**
      * 
