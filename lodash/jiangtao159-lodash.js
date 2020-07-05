@@ -902,7 +902,7 @@ var jiangtao159 = {
      */
     unionWith : function (...arrays) {
         let ary = Array.from(arguments);
-        let res = {}
+        let res = []
         let f = ary.pop();
         ary = this.flattenDeep(ary);
         for(let i = 0; i < ary.length;i++){
@@ -971,7 +971,7 @@ var jiangtao159 = {
         let res = [array[0]];
         for(let i = 1;i < array.length;i++){
             let bool = true;
-            for(let i = j - 1;j >= 0; j--){
+            for(let j = i - 1;j >= 0; j--){
                 if(comparator(array[i],array[j])){
                     bool = false
                 }
@@ -1040,6 +1040,33 @@ var jiangtao159 = {
         return obj
     },
 
+    /**
+     * 创建一个组成对象，key（键）是经过iteratee（迭代函数） 执行处理collection中每个元素后返回的结果，每个key（键）对应的值是iteratee（迭代函数）返回该key（键）的次数
+     * @param {Object/Array} collection   需要迭代的集合 
+     * @param {*} iteratee   迭代的方法
+     */
+    countBy : function(collection,iteratee){
+        let obj = {};
+        let f = this.changeToFunction(iteratee)
+        if(Array.isArray(collection)){
+            for(let i = 0; i < collection.length;i++){
+                if(!(f(collection[i]) in obj)){
+                    obj[f(collection[i])] = 1;
+                }else{
+                    obj[f(collection[i])]++;
+                }
+            }
+        }else{
+            for(let proto in collection){
+                if(!(f(proto) in obj)){
+                    obj[f(proto)] = 1;
+                }else{
+                    obj[f(proto)]++;
+                }
+            }
+        }
+        return obj;
+    },
     /**
      * 
      * @param {Array} array 
@@ -1144,8 +1171,8 @@ var jiangtao159 = {
             }
         })
         ary.forEach(element => {
-            if(map[f(it)] == 1){
-                res.push(it)
+            if(map[f(element)] == 1){
+                res.push(element)
             }
         });
         return res;
@@ -1526,17 +1553,91 @@ var jiangtao159 = {
     
     /**
      * 
-     * @param {Array/Object} collection 
-     * @param {Function} predicate
-     * @returns {Boolean}
-     * 用函数判断集合里所有元素，如果有false返回false，否则返回true 
+     * @param {Array/Object} collection  需要检查的元素的集合
+     * @param {Function} predicate  每次迭代调用的函数。
+     * @returns {Boolean}  如果所有元素经 predicate（断言函数） 检查后都都返回真值，那么就返回true，否则返回 false 。
+     * 
      */
     every : function(collection, predicate){
-        for(let i in collection){
-            if(!predicate(collection[i],i,collection)){
-                return false
+        let f = this.changeToFunction(predicate);
+        if(Array.isArray(collection)){
+            for(let i = 0;i < collection.length;i++){
+                if(!f(collection[i],i,collection)){
+                    return false
+                }
             }
-            return true
+        }else{
+            for(let proto in collection){
+                if(!f(collection[proto],proto,collection)){
+                    return false
+                }
+            }
         }
+        return true;
+    },
+
+    /**
+     * 遍历collection（集合）元素，返回predicate（断言函数）返回真值 的所有元素的数组。 predicate（断言函数）调用三个参数：(value, index|key, collection)。
+     * @param {Object/Array} collection  一个用来迭代的集合。
+     * @param {*} predicate  每次迭代调用的函数。
+     * @returns {Array}  返回一个新的过滤后的数组。
+     */
+    filter : function(collection, predicate){
+        let f = this.changeToFunction(predicate);
+        let res = [];
+        if(Array.isArray(collection)){
+            collection.forEach((element,i,collection) => {
+                if(f(element,i,collection)){
+                    res.push(element)
+                }
+            });
+        }else{
+            for(let proto in collection){
+                if(f(collection[proto],proto,collection)){
+                    res.push(collection[proto])
+                }
+            }
+        }
+        return res;
+    },
+    
+    /**
+     * 遍历collection（集合）元素，返回predicate（断言函数）第一个返回真值的第一个元素。predicate（断言函数）调用3个参数：(value, index|key, collection)。
+     * @param {Array/Object} collection 一个用来迭代的集合。
+     * @param {*} predicate  每次迭代调用的函数。
+     */
+    find : function (collection, predicate,fromIndex = 0) {
+        let f = this.changeToFunction(predicate);
+        if(Array.isArray(collection)){
+            for(let i = fromIndex; i < collection.length;i++){
+                if(f(collection[i],i,collection)){
+                    return collection[i];
+                }
+            }
+        }else{
+            for(let proto in collection){
+                if(f(collection[proto],proto,collection)){
+                    return collection[proto]
+                }
+            }
+        }
+        return undefined;
+    },
+
+    /**
+     * 
+     * @param {Array} collection 一个用来迭代的集合。
+     * @param {*} predicate  每次迭代调用的函数。
+     * @param {*} fromIndex 开始搜索的索引位置
+     * @returns 返回匹配元素，否则返回 undefined。
+     */
+    findLast : function (collection, predicate, fromIndex =collection.length-1) {
+        let f = this.changeToFunction(predicate);
+        for(let i = fromIndex;i >= 0;i--){
+            if(f(collection[i],i,collection)){
+                return collection[i]
+            }
+        }
+        return undefined;
     },
 }
