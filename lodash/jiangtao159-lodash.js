@@ -1527,26 +1527,36 @@ var jiangtao159 = {
      */
     flatMap : function (collection, iteratee) {
         let res = [];
-        for(let i in collection){
-            res.concat(iteratee(collection[i],i,collection));
+        let f = this.changeToFunction(iteratee)
+        if(Array.isArray(collection)){
+            for(leti = 0; i < collection.length;i++){
+                res.concat(f(collection[i],i,collection));
+            }
+        }else{
+            for(let proto in collection){
+                res.concat(f(collection[proto],proto,collection))
+            }
         }
         return res;
     },
 
+    /**
+     * 这个方法类似_.flatMap，不同之处在于_.flatMapDeep会继续扁平化递归映射的结果。
+     * @param {Array/Object} collection 
+     * @param {*} iteratee 
+     * @returns {Array}返回新扁平化数组。
+     */
     flatMapDeep : function (collection, iteratee) {
         let res = [];
-        for(let i in collection){
-            let temp = iteratee(collection[i],i,collection);
-            function openArray(array) {
-                for(let j = 0; j < array.length;j++){
-                    if(Array.isArray(array[j])){
-                        openArray
-                    }else{
-                        res.push(array[j])
-                    }
-                }
+        let f = this.changeToFunction(iteratee)
+        if(Array.isArray(collection)){
+            collection.forEach((element,i,collection) => {
+                res.concat(this.flattenDeep(f(iteratee[element],i,collection)))
+            });
+        }else{
+            for(let proto in collection){
+                res.concat(this.flattenDeep(f(collection[proto],proto,collection)))
             }
-            openArray(temp);
         }
         return res;
     },
