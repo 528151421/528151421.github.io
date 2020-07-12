@@ -1529,7 +1529,7 @@ var jiangtao159 = {
         let res = [];
         let f = this.changeToFunction(iteratee)
         if(Array.isArray(collection)){
-            for(leti = 0; i < collection.length;i++){
+            for(let i = 0; i < collection.length;i++){
                 res = res.concat(f(collection[i],i,collection));
             }
         }else{
