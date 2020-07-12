@@ -1530,11 +1530,11 @@ var jiangtao159 = {
         let f = this.changeToFunction(iteratee)
         if(Array.isArray(collection)){
             for(leti = 0; i < collection.length;i++){
-                res.concat(f(collection[i],i,collection));
+                res = res.concat(f(collection[i],i,collection));
             }
         }else{
             for(let proto in collection){
-                res.concat(f(collection[proto],proto,collection))
+                res = res.concat(f(collection[proto],proto,collection))
             }
         }
         return res;
@@ -1551,11 +1551,12 @@ var jiangtao159 = {
         let f = this.changeToFunction(iteratee)
         if(Array.isArray(collection)){
             collection.forEach((element,i,collection) => {
-                res.concat(this.flattenDeep(f(iteratee[element],i,collection)))
+                console.log(f(element,i,collection))
+                res = res.concat(this.flattenDeep(f(element,i,collection)))
             });
         }else{
             for(let proto in collection){
-                res.concat(this.flattenDeep(f(collection[proto],proto,collection)))
+                res = res.concat(this.flattenDeep(f(collection[proto],proto,collection)))
             }
         }
         return res;
